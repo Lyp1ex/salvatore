@@ -6,7 +6,6 @@ import { siteConfig } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
-import Showcase from "./sections/Showcase";
 import Work from "./sections/Work";
 
 const upsertMeta = (key: "name" | "property", value: string, content: string) => {
@@ -78,7 +77,6 @@ export default function App() {
         <Hero />
         <About />
         <Work />
-        <Showcase />
         <Contact />
       </main>
 

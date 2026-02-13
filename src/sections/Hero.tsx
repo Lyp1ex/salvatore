@@ -16,7 +16,7 @@ export default function Hero() {
           {siteConfig.statusChip}
         </span>
 
-        <h1 className="mt-5 text-5xl font-extrabold leading-[0.95] text-zinc-50 sm:text-7xl">
+        <h1 className="signature-name mt-5 text-6xl font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl">
           {siteConfig.displayName}
         </h1>
 
@@ -33,8 +33,24 @@ export default function Hero() {
             Neler Yapıyorum?
           </Button>
         </div>
+
+        <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-3">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 18, ease: "linear", repeat: Infinity }}
+            className="flex min-w-max gap-2 px-3"
+          >
+            {[...siteConfig.highlights, ...siteConfig.highlights].map((item, index) => (
+              <span
+                key={`${item}-${index}`}
+                className="rounded-full border border-cyan-200/25 bg-zinc-900/70 px-3 py-1 text-xs uppercase tracking-wide text-zinc-200"
+              >
+                {item}
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
 }
-

@@ -2,7 +2,6 @@ const navItems = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#work", label: "Work" },
-  { href: "#highlights", label: "Highlights" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -23,4 +22,3 @@ export default function Navbar() {
     </header>
   );
 }
-

@@ -9,7 +9,7 @@ type Particle = {
   alpha: number;
 };
 
-const colors = ["#7fffd4", "#6fe7ff", "#ae8bff", "#77ffc9"];
+const colors = ["#c4d0d8", "#91cfc4", "#8ea9b4", "#95f0dc"];
 
 const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
@@ -101,4 +101,3 @@ export default function BackgroundFX() {
     </div>
   );
 }
-

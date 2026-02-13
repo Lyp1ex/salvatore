@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
-import { HiOutlineEnvelope } from "react-icons/hi2";
 import Button from "../components/Button";
 import { siteConfig } from "../config/site";
 
@@ -8,7 +7,6 @@ export default function Contact() {
   const socialList = [
     { ...siteConfig.socials.telegram, icon: <FaTelegramPlane /> },
     { ...siteConfig.socials.instagram, icon: <FaInstagram /> },
-    { ...siteConfig.socials.email, icon: <HiOutlineEnvelope /> },
   ];
 
   return (
@@ -28,8 +26,8 @@ export default function Contact() {
             <Button
               key={social.label}
               href={social.url}
-              target={social.url.startsWith("mailto:") ? undefined : "_blank"}
-              rel={social.url.startsWith("mailto:") ? undefined : "noreferrer"}
+              target="_blank"
+              rel="noreferrer"
               variant="ghost"
               className="gap-2"
             >
@@ -42,7 +40,6 @@ export default function Contact() {
         <div className="mt-5 space-y-1 text-sm text-zinc-400">
           <p>{siteConfig.socials.telegram.handle}</p>
           <p>{siteConfig.socials.instagram.handle}</p>
-          <p>{siteConfig.socials.email.handle}</p>
         </div>
 
         <p className="mt-8 border-t border-white/10 pt-4 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">

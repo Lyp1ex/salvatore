@@ -10,13 +10,6 @@ export type ServiceItem = {
   tags: string[];
 };
 
-export type ShowcaseItem = {
-  title: string;
-  description: string;
-  tags: string[];
-  link?: string;
-};
-
 export type SiteConfig = {
   displayName: string;
   tagline: string;
@@ -25,7 +18,7 @@ export type SiteConfig = {
   aboutParagraphs: string[];
   quickFacts: string[];
   services: ServiceItem[];
-  showcases: ShowcaseItem[];
+  highlights: string[];
   contactLine: string;
   madeWithLine: string;
   seo: {
@@ -37,29 +30,30 @@ export type SiteConfig = {
   socials: {
     telegram: SocialLink;
     instagram: SocialLink;
-    email: SocialLink;
   };
 };
 
 export const siteConfig: SiteConfig = {
   displayName: "Salvatoré",
-  tagline: "Web altyapı, script setup ve finans ops tarafında işi sessizce çözen partner.",
-  microLine: "2017’den beri çizgim aynı: net kalite, temiz teslim, boş konuşma yok.",
+  tagline: "Script paketleri, kripto-finans süreçleri ve reklam akışında düzeni kurarım.",
+  microLine: "2017’den beri aynı karakter: net iş, hızlı akış, premium sonuç.",
   statusChip: "DM açık • Aktif",
   aboutParagraphs: [
     "2017’de Discord tarafında başladım. Kimliğim belliydi, iş kalitem belliydi, hâlâ aynı çizgideyim.",
     "Sonra Telegram’a geçtim, tempo yükseldi ama standart hiç düşmedi. Nerede olursam olayım işin teslim kalitesi aynı.",
-    "Web tarafında altyapı kurarım, script paketlerim, hazır setup çıkarırım ve sistemi sana göre özelleştiririm.",
-    "Çalışma stilim basit: brief net, akış hızlı, çıktı temiz. Bekletmem, uzatmam, işi çözer geçerim.",
+    "Script paketleri üretirim, hazır setup çıkarırım, altyapıyı senin düzenine göre özelleştiririm. Sadece yazıp bırakmam, çalışır hale getiririm.",
+    "Kripto ve finans tarafında takip, akış, bakiye yönetimi görünürlüğü ve rapor düzeni kurarım. Reklam tarafında da sürecin kontrolünü düzenli hale getiririm.",
   ],
   quickFacts: [
     "2017’den beri aktif",
     "Discord → Telegram geçişi",
     "Web altyapıları / script paketleri",
     "Özelleştirme + kurulum",
+    "Kripto işlem süreç takibi",
+    "Finans akış düzeni + bakiye görünürlüğü",
+    "Reklam süreçlerinde kontrol ve rapor",
     "Hızlı teslim",
     "İletişim net",
-    "Finans ops tarafı (dashboard / rapor)",
   ],
   services: [
     {
@@ -81,67 +75,48 @@ export const siteConfig: SiteConfig = {
       tags: ["Kurulum", "Özelleştirme", "Stabilite"],
     },
     {
-      title: "Panel / Dashboard Kurgusu",
+      title: "Kripto Süreç Kurgusu",
       description:
-        "Veriyi okunur hale getiren sade ama güçlü panel kurguları. Ekrana bakınca ne olduğu direkt anlaşılır.",
-      tags: ["Dashboard", "UX", "Raporlama"],
+        "İşlem akışını ve günlük takibi sade bir düzende topluyorum. Kaos yerine kontrol hissi veriyor.",
+      tags: ["Kripto", "Takip", "Düzen"],
     },
     {
-      title: "Web Otomasyon Mantığı",
+      title: "Finans Akış Düzeni",
       description:
-        "Tekrar eden işleri akıllı akışlara çeviriyorum. Zaman kaybettiren manuel adımları devreden çıkarıyorum.",
-      tags: ["Otomasyon", "Workflow", "Operasyon"],
+        "Finans tarafında akış, tablo ve rapor düzenini kuruyorum. Gün sonu kontrolü kolay, karar süreci net.",
+      tags: ["Finans", "Tablo", "Rapor"],
     },
     {
-      title: "Finans Operasyon Desteği",
+      title: "Bakiye ve Hareket Takibi",
       description:
-        "Takip, rapor ve süreç yönetiminde düzen kuruyorum. Sayılar net, tablo net, karar süreci net.",
-      tags: ["Takip", "Dashboard", "Rapor"],
+        "Hareketleri dağınık bırakmadan izlenebilir hale getiriyorum. Nerede ne var sorusunu tek bakışta çözer.",
+      tags: ["Bakiye", "Takip", "Görünürlük"],
+    },
+    {
+      title: "Reklam Süreç Yönetimi",
+      description:
+        "Reklam çıkışlarını, bütçe akışını ve sonuç özetini düzenli bir yapıda yönetilebilir hale getiriyorum.",
+      tags: ["Reklam", "Bütçe", "Özet"],
     },
   ],
-  showcases: [
-    {
-      title: "Topluluk Komuta Paneli",
-      description:
-        "Discord + Telegram akışlarını tek panelde toplayan, görev dağıtımı ve duyuru yönetimi odaklı dashboard.",
-      tags: ["Topluluk", "Panel", "Workflow"],
-    },
-    {
-      title: "Script Vitrin Sitesi",
-      description:
-        "Hazır script paketlerinin sergilendiği, kategori + hızlı teslim formu içeren premium satış vitrini.",
-      tags: ["Marketplace", "Script", "UI"],
-    },
-    {
-      title: "Operasyon Takip Masası",
-      description:
-        "Günlük iş akışını kart bazlı izleyen, teslim durumlarını renk kodlarıyla sadeleştiren yönetim ekranı.",
-      tags: ["Operasyon", "Kanban", "Takip"],
-    },
-    {
-      title: "Finans Snapshot Raporu",
-      description:
-        "Gelir-gider akışını haftalık ve aylık kırılımla gösteren, karar toplantıları için hızlı rapor arayüzü.",
-      tags: ["Finans Ops", "Rapor", "Analiz"],
-    },
-    {
-      title: "Hızlı Yayın Landing Seti",
-      description:
-        "Tek ürün odaklı sayfalar için hızlı yayın altyapısı, form entegrasyonu ve ölçümleme kurgu paketi.",
-      tags: ["Landing", "Setup", "Ölçümleme"],
-    },
+  highlights: [
+    "Script paketleri",
+    "Kripto takip düzeni",
+    "Finans tablo akışı",
+    "Reklam süreç kontrolü",
+    "Hızlı teslim",
   ],
   contactLine:
-    "Bir fikrin varsa uzatma, yaz geç. Net konuşuruz, doğru setup’ı kurar, işi birlikte çıkarırız.",
+    "İş varsa yaz, direkt konuya girelim. Scriptten kripto-finans akışına kadar düzeni birlikte kurarız.",
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   seo: {
-    title: "Salvatoré | Web Altyapı, Script & Finans Ops",
+    title: "Salvatoré | Script, Kripto ve Finans Akışı",
     description:
-      "Salvatoré: 2017’den beri web altyapıları, script paketleri, kurulum-özelleştirme ve finans operasyon desteğinde hızlı, net, temiz çözümler.",
+      "Salvatoré: 2017’den beri script paketleri, kripto-finans süreç düzeni, reklam akışı ve web altyapısında net, hızlı, temiz çözümler.",
     ogDescription:
-      "Discord’dan Telegram’a taşınan aynı kalite: website scriptleri, altyapılar, dashboard ve finans ops süreçleri.",
+      "Discord’dan Telegram’a taşınan aynı kalite: script paketleri, kripto-finans düzeni, reklam süreç kontrolü ve web altyapı kurgusu.",
     twitterDescription:
-      "Web setup, script paketleri, panel kurgusu ve finans ops tarafında işi çözen tek sayfa vitrin.",
+      "Script paketleri, kripto-finans süreç düzeni ve reklam akışını sade şekilde yöneten signature profil sayfası.",
   },
   socials: {
     telegram: {
@@ -153,11 +128,6 @@ export const siteConfig: SiteConfig = {
       label: "Instagram",
       handle: "@donsalvatoore",
       url: "https://instagram.com/donsalvatoore",
-    },
-    email: {
-      label: "Email",
-      handle: "hello@yourmail.com",
-      url: "mailto:hello@yourmail.com",
     },
   },
 };
