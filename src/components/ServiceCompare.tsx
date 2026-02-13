@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
-import { HiArrowsRightLeft } from "react-icons/hi2";
+import { useMemo } from "react";
+import { HiArrowTrendingUp, HiCheckCircle } from "react-icons/hi2";
 import type { ServiceComparison } from "../config/site";
 
 type ServiceCompareProps = {
@@ -8,14 +8,22 @@ type ServiceCompareProps = {
 };
 
 export default function ServiceCompare({ data }: ServiceCompareProps) {
-  const [ratio, setRatio] = useState(58);
+  const isTurkish = data.standardLabel.toLowerCase().includes("standart");
 
-  const sliderMask = useMemo(
-    () => ({
-      clipPath: `polygon(${ratio}% 0%, 100% 0%, 100% 100%, ${ratio}% 100%)`,
-    }),
-    [ratio],
-  );
+  const rows = useMemo(() => {
+    const max = Math.max(data.standardPoints.length, data.premiumPoints.length);
+    return Array.from({ length: max }, (_, index) => ({
+      standard: data.standardPoints[index] ?? "",
+      premium: data.premiumPoints[index] ?? "",
+    }));
+  }, [data.premiumPoints, data.standardPoints]);
+
+  const matrixTitle = isTurkish ? "Fark Matrisi" : "Difference Matrix";
+  const matrixHint = isTurkish
+    ? "Aynı başlık altında iki farklı yaklaşımın net çıktı farkı"
+    : "Clear output gap between two approaches under the same scope";
+  const standardHint = isTurkish ? "Temel Akış" : "Base Flow";
+  const premiumHint = isTurkish ? "Signature Akış" : "Signature Flow";
 
   return (
     <motion.div
@@ -30,52 +38,77 @@ export default function ServiceCompare({ data }: ServiceCompareProps) {
         <p className="mt-2 max-w-3xl text-sm text-zinc-300">{data.intro}</p>
       </div>
 
-      <div className="relative min-h-[340px] overflow-hidden rounded-2xl border border-white/10 bg-black/35">
-        <div className="absolute inset-0 p-4 sm:p-5">
+      <div className="grid gap-4 lg:grid-cols-2">
+        <motion.article
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.35 }}
+          className="rounded-2xl border border-white/10 bg-[rgba(5,6,9,.44)] p-4"
+        >
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400">{data.standardLabel}</p>
+          <p className="mt-2 text-xs uppercase tracking-[0.14em] text-zinc-500">{standardHint}</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-300">
             {data.standardPoints.map((point) => (
               <li key={point} className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-500" />
+                <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-zinc-500" />
                 <span>{point}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </motion.article>
 
-        <motion.div
-          style={sliderMask}
-          className="absolute inset-0 border-l border-[rgba(212,176,93,.4)] bg-[linear-gradient(135deg,rgba(212,176,93,.16),rgba(120,213,199,.1),rgba(7,8,12,.9))] p-4 sm:p-5"
+        <motion.article
+          initial={{ opacity: 0, x: 10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.35, delay: 0.05 }}
+          className="rounded-2xl border border-[rgba(212,176,93,.32)] bg-[linear-gradient(130deg,rgba(212,176,93,.14),rgba(120,213,199,.08),rgba(7,8,12,.78))] p-4"
         >
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--lux-gold-soft)]">
-            {data.premiumLabel}
-          </p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--lux-gold-soft)]">{data.premiumLabel}</p>
+          <p className="mt-2 text-xs uppercase tracking-[0.14em] text-zinc-300">{premiumHint}</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-100">
             {data.premiumPoints.map((point) => (
               <li key={point} className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--lux-gold-soft)]" />
+                <HiCheckCircle className="mt-[1px] text-base text-[var(--lux-gold-soft)]" />
                 <span>{point}</span>
               </li>
             ))}
           </ul>
-        </motion.div>
+        </motion.article>
+      </div>
 
-        <div className="pointer-events-none absolute inset-y-0 z-20" style={{ left: `${ratio}%` }}>
-          <div className="absolute inset-y-0 -ml-px w-0.5 bg-[rgba(241,228,197,.9)] shadow-[0_0_20px_rgba(241,228,197,.55)]" />
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(241,228,197,.7)] bg-[rgba(10,11,14,.95)] p-2 text-[var(--lux-gold-soft)] shadow-[0_0_24px_rgba(212,176,93,.45)]">
-            <HiArrowsRightLeft className="text-base" />
+      <div className="mt-5 rounded-2xl border border-[rgba(212,176,93,.22)] bg-[rgba(8,10,14,.7)] p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">{matrixTitle}</p>
+            <p className="mt-1 text-xs text-zinc-400">{matrixHint}</p>
           </div>
+          <span className="inline-flex items-center gap-1 rounded-full border border-[rgba(212,176,93,.3)] bg-[rgba(212,176,93,.08)] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-zinc-200">
+            <HiArrowTrendingUp />
+            {data.premiumLabel}
+          </span>
         </div>
 
-        <input
-          aria-label="Service comparison slider"
-          type="range"
-          min={20}
-          max={80}
-          value={ratio}
-          onChange={(event) => setRatio(Number(event.target.value))}
-          className="absolute inset-0 z-30 h-full w-full cursor-ew-resize opacity-0"
-        />
+        <div className="mt-4 space-y-2">
+          {rows.map((row, index) => (
+            <motion.article
+              key={`${row.standard}-${row.premium}-${index}`}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.28, delay: index * 0.03 }}
+              className="grid gap-2 rounded-xl border border-white/10 bg-black/20 p-3 md:grid-cols-2"
+            >
+              <div className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-zinc-300">
+                {row.standard || "-"}
+              </div>
+              <div className="rounded-lg border border-[rgba(212,176,93,.34)] bg-[rgba(212,176,93,.08)] px-3 py-2 text-sm text-zinc-100">
+                {row.premium || "-"}
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
