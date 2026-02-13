@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import Button from "../components/Button";
+import QuoteWizard from "../components/QuoteWizard";
 import type { SiteConfig } from "../config/site";
 
 type ContactProps = {
@@ -27,42 +28,51 @@ export default function Contact({ site }: ContactProps) {
             {site.contactHint}
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <div className="cta-orbit" data-cursor="active">
-              <span className="cta-orbit-ring" aria-hidden />
-              <span className="cta-orbit-ring cta-orbit-ring-delay" aria-hidden />
-              <Button
-                href={site.socials.telegram.url}
-                target="_blank"
-                rel="noreferrer"
-                variant="primary"
-                className="gap-2 px-6 py-3 text-base"
-              >
-                <FaTelegramPlane />
-                {site.mobileCtaLabel}
-              </Button>
+          <div className="mt-7 grid gap-5 xl:grid-cols-[1.08fr_.92fr]">
+            <div className="rounded-2xl border border-[rgba(212,176,93,.24)] bg-[rgba(7,9,12,.65)] p-5">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">{site.finalCtaEyebrow}</p>
+              <p className="mt-2 text-sm text-zinc-300">{site.finalCtaLine}</p>
+
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <div className="cta-orbit" data-cursor="active">
+                  <span className="cta-orbit-ring" aria-hidden />
+                  <span className="cta-orbit-ring cta-orbit-ring-delay" aria-hidden />
+                  <Button
+                    href={site.socials.telegram.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    variant="primary"
+                    className="gap-2 px-6 py-3 text-base"
+                  >
+                    <FaTelegramPlane />
+                    {site.mobileCtaLabel}
+                  </Button>
+                </div>
+
+                <Button
+                  href={site.socials.instagram.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="ghost"
+                  className="gap-2"
+                >
+                  <FaInstagram />
+                  {site.socials.instagram.label}
+                </Button>
+              </div>
+
+              <div className="mt-5 space-y-1 text-sm text-zinc-400">
+                <p>{site.socials.telegram.handle}</p>
+                <p>{site.socials.instagram.handle}</p>
+              </div>
+
+              <p className="mt-8 border-t border-white/10 pt-4 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">
+                {site.madeWithLine}
+              </p>
             </div>
 
-            <Button
-              href={site.socials.instagram.url}
-              target="_blank"
-              rel="noreferrer"
-              variant="ghost"
-              className="gap-2"
-            >
-              <FaInstagram />
-              {site.socials.instagram.label}
-            </Button>
+            <QuoteWizard site={site} />
           </div>
-
-          <div className="mt-5 space-y-1 text-sm text-zinc-400">
-            <p>{site.socials.telegram.handle}</p>
-            <p>{site.socials.instagram.handle}</p>
-          </div>
-
-          <p className="mt-8 border-t border-white/10 pt-4 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">
-            {site.madeWithLine}
-          </p>
         </div>
       </motion.div>
     </footer>

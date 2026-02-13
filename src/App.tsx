@@ -32,6 +32,35 @@ const upsertMeta = (key: "name" | "property", value: string, content: string) =>
   document.head.appendChild(meta);
 };
 
+const upsertLink = (rel: string, href: string) => {
+  const selector = `link[rel="${rel}"]`;
+  const existing = document.querySelector<HTMLLinkElement>(selector);
+  if (existing) {
+    existing.setAttribute("href", href);
+    return;
+  }
+
+  const link = document.createElement("link");
+  link.setAttribute("rel", rel);
+  link.setAttribute("href", href);
+  document.head.appendChild(link);
+};
+
+const upsertJsonLd = (id: string, data: Record<string, unknown>) => {
+  const existing = document.querySelector<HTMLScriptElement>(`script[data-schema-id="${id}"]`);
+  const payload = JSON.stringify(data);
+  if (existing) {
+    existing.textContent = payload;
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.setAttribute("data-schema-id", id);
+  script.textContent = payload;
+  document.head.appendChild(script);
+};
+
 function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
   return (
     <AnimatePresence>
@@ -81,18 +110,54 @@ export default function App() {
   const site = useMemo(() => siteConfigs[locale], [locale]);
 
   useEffect(() => {
+    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
     document.title = site.seo.title;
     upsertMeta("name", "description", site.seo.description);
     upsertMeta("property", "og:title", site.seo.title);
     upsertMeta("property", "og:description", site.seo.ogDescription);
     upsertMeta("property", "og:image", "/og-card.svg");
+    upsertMeta("property", "og:url", canonicalUrl);
+    upsertMeta("property", "og:locale", locale === "tr" ? "tr_TR" : "en_US");
     upsertMeta("name", "twitter:title", site.seo.title);
     upsertMeta("name", "twitter:description", site.seo.twitterDescription);
     upsertMeta("name", "twitter:image", "/og-card.svg");
+    upsertMeta("name", "twitter:url", canonicalUrl);
+    upsertMeta("name", "robots", "index,follow,max-image-preview:large");
+    upsertMeta("name", "keywords", site.seo.keywords.join(", "));
+    upsertLink("canonical", canonicalUrl);
+
+    upsertJsonLd("salvatore-schema", {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          name: site.displayName,
+          alternateName: "Don Salvatore",
+          description: site.seo.description,
+          url: canonicalUrl,
+          sameAs: [site.socials.telegram.url, site.socials.instagram.url],
+          knowsAbout: site.services.map((service) => service.title),
+        },
+        {
+          "@type": "ProfessionalService",
+          name: site.displayName,
+          url: canonicalUrl,
+          areaServed: "Global",
+          description: site.seo.ogDescription,
+          serviceType: site.services.map((service) => service.title),
+        },
+        {
+          "@type": "WebSite",
+          name: site.displayName,
+          url: canonicalUrl,
+          inLanguage: locale,
+        },
+      ],
+    });
 
     const timer = window.setTimeout(() => setIsBooting(false), 1400);
     return () => window.clearTimeout(timer);
-  }, [site]);
+  }, [locale, site]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {

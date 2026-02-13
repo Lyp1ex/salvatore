@@ -152,6 +152,22 @@ body {
   box-shadow: 0 0 20px rgba(212, 176, 93, 0.18);
 }
 
+.nav-pill {
+  position: relative;
+  isolation: isolate;
+}
+
+.nav-pill-active {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 176, 93, 0.56);
+  background: linear-gradient(112deg, rgba(212, 176, 93, 0.22), rgba(120, 213, 199, 0.17));
+  box-shadow: 0 0 20px rgba(212, 176, 93, 0.28);
+}
+
 .storyline-rail {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
 }
@@ -220,6 +236,44 @@ body {
   animation: sweep-pass 0.9s ease;
 }
 
+.signature-reel {
+  position: relative;
+}
+
+.signature-reel-line {
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  left: 18%;
+  background: linear-gradient(180deg, rgba(241, 228, 197, 0), rgba(241, 228, 197, 0.75), rgba(241, 228, 197, 0));
+  box-shadow: 0 0 18px rgba(241, 228, 197, 0.45);
+  animation: reel-line-drift 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.trust-bar-shell,
+.wizard-progress-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-bar-fill,
+.wizard-progress-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-bar-fill::after,
+.wizard-progress-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  transform: translateX(-100%);
+  animation: bar-shine 2.7s linear infinite;
+  pointer-events: none;
+}
+
 .cta-orbit {
   position: relative;
   display: inline-flex;
@@ -282,6 +336,32 @@ body {
   left: 10%;
   background: radial-gradient(circle, rgba(120, 213, 199, 0.5) 0%, rgba(120, 213, 199, 0) 72%);
   animation: pulse-float 9s ease-in-out infinite reverse;
+}
+
+.case-scene-glow {
+  position: fixed;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(32px);
+  opacity: 0.28;
+}
+
+.case-scene-glow-one {
+  right: 8%;
+  top: 10%;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(212, 176, 93, 0.5) 0%, rgba(212, 176, 93, 0) 70%);
+  animation: case-glow-float 10s ease-in-out infinite;
+}
+
+.case-scene-glow-two {
+  left: 6%;
+  bottom: 6%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(120, 213, 199, 0.44) 0%, rgba(120, 213, 199, 0) 70%);
+  animation: case-glow-float 11s ease-in-out infinite reverse;
 }
 
 .lux-cursor-ring {
@@ -426,6 +506,39 @@ body {
   }
 }
 
+@keyframes bar-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+@keyframes reel-line-drift {
+  0% {
+    left: 18%;
+  }
+  50% {
+    left: 78%;
+  }
+  100% {
+    left: 18%;
+  }
+}
+
+@keyframes case-glow-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 @media (max-width: 640px) {
   .blob {
     width: 24rem;
@@ -450,7 +563,11 @@ body {
   .grid-layer,
   .cta-orbit-ring,
   .proof-track,
-  .contact-pulse {
+  .contact-pulse,
+  .signature-reel-line,
+  .trust-bar-fill::after,
+  .wizard-progress-fill::after,
+  .case-scene-glow {
     animation: none !important;
   }
 }

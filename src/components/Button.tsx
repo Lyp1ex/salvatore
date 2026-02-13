@@ -22,7 +22,7 @@ type NativeButtonProps = SharedProps &
 type ButtonProps = LinkProps | NativeButtonProps;
 
 const baseClass =
-  "lux-sweep-btn inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60";
+  "lux-sweep-btn inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 disabled:cursor-not-allowed disabled:opacity-55";
 
 const variantClass: Record<Variant, string> = {
   primary:

@@ -10,6 +10,12 @@ export type ServiceItem = {
   title: string;
   description: string;
   tags: string[];
+  filters: string[];
+};
+
+export type ServiceFilterItem = {
+  id: string;
+  label: string;
 };
 
 export type CounterMetric = {
@@ -39,6 +45,36 @@ export type ProofQuote = {
   quote: string;
   author: string;
   role: string;
+};
+
+export type TrustMetric = {
+  label: string;
+  value: number;
+  summary: string;
+};
+
+export type QuoteWizardConfig = {
+  title: string;
+  intro: string;
+  stepLabels: string[];
+  prompts: {
+    service: string;
+    budget: string;
+    timeline: string;
+    note: string;
+  };
+  options: {
+    services: string[];
+    budgets: string[];
+    timelines: string[];
+  };
+  notePlaceholder: string;
+  buttons: {
+    back: string;
+    next: string;
+    send: string;
+  };
+  readyLabel: string;
 };
 
 export type ServiceComparison = {
@@ -89,6 +125,7 @@ export type SiteConfig = {
   workTitle: string;
   workEyebrow: string;
   workIntro: string;
+  serviceFilters: ServiceFilterItem[];
   services: ServiceItem[];
   caseStudies: CaseStudy[];
   processTitle: string;
@@ -103,11 +140,16 @@ export type SiteConfig = {
   storyMoments: StoryMoment[];
   comparison: ServiceComparison;
   proofQuotes: ProofQuote[];
+  reelWords: string[];
+  trustMetrics: TrustMetric[];
+  quoteWizard: QuoteWizardConfig;
   highlights: string[];
   counterMetrics: CounterMetric[];
   contactTitle: string;
   contactLine: string;
   contactHint: string;
+  finalCtaEyebrow: string;
+  finalCtaLine: string;
   madeWithLine: string;
   commandTitle: string;
   commandHint: string;
@@ -123,12 +165,16 @@ export type SiteConfig = {
     previous: string;
     next: string;
     progress: string;
+    eyebrow: string;
+    keyboardHint: string;
+    sceneNote: string;
   };
   seo: {
     title: string;
     description: string;
     ogDescription: string;
     twitterDescription: string;
+    keywords: string[];
   };
   socials: {
     telegram: SocialLink;
@@ -197,48 +243,62 @@ const trConfig: SiteConfig = {
   workEyebrow: "servisler",
   workIntro:
     "Buradaki bütün hizmetler tek hedefe oynar: müşterinin işini hızlandırmak, dağınıklığı toplamak, süreci görünür ve yönetilebilir hale getirmek.",
+  serviceFilters: [
+    { id: "all", label: "Hepsi" },
+    { id: "script", label: "Script" },
+    { id: "crypto", label: "Kripto" },
+    { id: "finance", label: "Finans" },
+    { id: "ads", label: "Reklam" },
+  ],
   services: [
     {
       title: "Website Altyapıları",
       description:
         "Performans ve ölçek odaklı temel mimariyi kuruyorum. Proje dağılmadan, sağlam zeminde büyüyor.",
       tags: ["Mimari", "Performans", "Ölçek"],
+      filters: ["all", "script"],
     },
     {
       title: "Hazır Script Paketleri",
       description:
         "Hazır ve modüler script paketleriyle süreci hızlandırıyorum. Gereksiz tekrar yerine direkt sonuç.",
       tags: ["Hazır Paket", "Modüler", "Hızlı Başlangıç"],
+      filters: ["all", "script"],
     },
     {
       title: "Kurulum & Özelleştirme",
       description:
         "Kurulumu bitirip bırakmıyorum; iş akışına göre ince ayar yapıp sistemi stabil hale getiriyorum.",
       tags: ["Kurulum", "Özelleştirme", "Stabilite"],
+      filters: ["all", "script"],
     },
     {
       title: "Kripto Süreç Kurgusu",
       description:
         "İşlem yoğunluğunu sade bir düzende topluyorum. Müşteri için kafa karışıklığı değil, kontrol hissi üretiyor.",
       tags: ["Kripto", "Takip", "Düzen"],
+      filters: ["all", "crypto"],
     },
     {
       title: "Finans Akış Düzeni",
       description:
         "Finans ve banka hareketlerinde akışı netleştiriyorum. Tablolar düzenli, günlük kontrol daha hızlı oluyor.",
       tags: ["Finans", "Banka", "Rapor"],
+      filters: ["all", "finance"],
     },
     {
       title: "Bakiye ve Hareket Takibi",
       description:
         "Bakiye ve hareket görünürlüğünü tek çatıya topluyorum. Nerede ne var sorusu tek bakışta cevaplanıyor.",
       tags: ["Bakiye", "Takip", "Görünürlük"],
+      filters: ["all", "finance", "crypto"],
     },
     {
       title: "Reklam Süreç Yönetimi",
       description:
         "Reklam çıkışlarını, bütçe akışını ve sonuç özetini düzenli bir yapıda yönetilebilir hale getiriyorum.",
       tags: ["Reklam", "Bütçe", "Özet"],
+      filters: ["all", "ads"],
     },
   ],
   caseStudies: [
@@ -385,6 +445,58 @@ const trConfig: SiteConfig = {
       role: "Kurucu",
     },
   ],
+  reelWords: [
+    "Script satış akışı",
+    "Kripto süreç kontrolü",
+    "Finans + banka görünürlüğü",
+    "Reklam operasyon ritmi",
+    "Signature teslim standardı",
+  ],
+  trustMetrics: [
+    {
+      label: "Hızlı Dönüş",
+      value: 96,
+      summary: "DM sonrası kısa sürede net plan",
+    },
+    {
+      label: "Süreç Görünürlüğü",
+      value: 94,
+      summary: "Kripto + finans + reklam aynı panel düzeninde",
+    },
+    {
+      label: "Teslim Disiplini",
+      value: 98,
+      summary: "Planlanan çizgide temiz teslim standardı",
+    },
+  ],
+  quoteWizard: {
+    title: "Teklif Sihirbazı",
+    intro: "3 adımda ne istediğini seç, hazır mesaj direkt Telegram'a düşsün.",
+    stepLabels: ["Hizmet", "Bütçe", "Süre", "Not"],
+    prompts: {
+      service: "Hangi ana başlık lazım?",
+      budget: "Bütçe aralığın nedir?",
+      timeline: "Ne kadar sürede başlamamız lazım?",
+      note: "Kısa not bırak (opsiyonel)",
+    },
+    options: {
+      services: [
+        "Script paketi / kurulum",
+        "Kripto süreç düzeni",
+        "Finans + banka akış düzeni",
+        "Reklam süreç yönetimi",
+      ],
+      budgets: ["10k - 25k", "25k - 50k", "50k - 100k", "100k+"],
+      timelines: ["Acil (24 saat)", "Bu hafta", "Bu ay", "Planlı başlatım"],
+    },
+    notePlaceholder: "Hedefini tek cümle yazman yeterli.",
+    buttons: {
+      back: "Geri",
+      next: "Devam",
+      send: "Telegram'a Gönder",
+    },
+    readyLabel: "Hazır mesaj",
+  },
   highlights: [
     "Script satış akışı",
     "Kripto takip düzeni",
@@ -401,6 +513,8 @@ const trConfig: SiteConfig = {
   contactTitle: "İletişim",
   contactLine: "Müşteri gibi bakıyorsan doğru yerdesin. Yaz, kısa bir plan çıkaralım ve işi hızlıca devreye alalım.",
   contactHint: "İlk mesaj formatı: hizmet türü + hedef + süre",
+  finalCtaEyebrow: "Final CTA",
+  finalCtaLine: "Hedefi net yaz, en doğru akışı hızlıca çıkaralım. Karmaşayı değil sonucu konuşalım.",
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Hızlı Komutlar",
   commandHint: "Ctrl/Cmd + K",
@@ -416,6 +530,9 @@ const trConfig: SiteConfig = {
     previous: "Önceki",
     next: "Sonraki",
     progress: "İlerleme",
+    eyebrow: "signature case",
+    keyboardHint: "Esc kapatır • Ok tuşları kartları gezer",
+    sceneNote: "Bu kart, müşterinin dağınık akıştan kontrollü düzene geçişinin kısa operasyon özetidir.",
   },
   seo: {
     title: "Don Salvatore bir markadır | Script, Kripto ve Finans",
@@ -425,6 +542,13 @@ const trConfig: SiteConfig = {
       "Discord’dan Telegram’a taşınan aynı kalite: script paketleri, kripto-finans düzeni, reklam süreç kontrolü ve web altyapı kurgusu.",
     twitterDescription:
       "Script paketleri, kripto-finans süreç düzeni ve reklam akışını sade şekilde yöneten signature profil sayfası.",
+    keywords: [
+      "Salvatore",
+      "script paketleri",
+      "kripto süreç düzeni",
+      "finans akış yönetimi",
+      "reklam süreç yönetimi",
+    ],
   },
   socials: baseSocials,
 };
@@ -477,41 +601,55 @@ const enConfig: SiteConfig = {
   workEyebrow: "services",
   workIntro:
     "Every service below targets one thing: speed up client execution, remove chaos, and make operations manageable.",
+  serviceFilters: [
+    { id: "all", label: "All" },
+    { id: "script", label: "Script" },
+    { id: "crypto", label: "Crypto" },
+    { id: "finance", label: "Finance" },
+    { id: "ads", label: "Ads" },
+  ],
   services: [
     {
       title: "Website Infrastructure",
       description: "I build performance-focused architecture so projects scale on stable foundations.",
       tags: ["Architecture", "Performance", "Scale"],
+      filters: ["all", "script"],
     },
     {
       title: "Ready Script Packs",
       description: "Modular script packs to speed up launch and remove repetitive overhead.",
       tags: ["Ready Pack", "Modular", "Fast Start"],
+      filters: ["all", "script"],
     },
     {
       title: "Setup & Customization",
       description: "Not just setup. I tune the system to fit your operation and make it stable.",
       tags: ["Setup", "Customization", "Stability"],
+      filters: ["all", "script"],
     },
     {
       title: "Crypto Process Design",
       description: "I simplify complex transaction flow into a controlled and readable system.",
       tags: ["Crypto", "Tracking", "Structure"],
+      filters: ["all", "crypto"],
     },
     {
       title: "Finance Flow Structure",
       description: "I align finance and banking movements into cleaner reporting and faster daily checks.",
       tags: ["Finance", "Banking", "Reports"],
+      filters: ["all", "finance"],
     },
     {
       title: "Balance & Movement Tracking",
       description: "I centralize balance visibility so teams instantly know what is where.",
       tags: ["Balance", "Tracking", "Visibility"],
+      filters: ["all", "finance", "crypto"],
     },
     {
       title: "Ad Operations Management",
       description: "I structure ad budget, execution, and outcome monitoring into one manageable loop.",
       tags: ["Ads", "Budget", "Control"],
+      filters: ["all", "ads"],
     },
   ],
   caseStudies: [
@@ -651,6 +789,58 @@ const enConfig: SiteConfig = {
       role: "Founder",
     },
   ],
+  reelWords: [
+    "Script sales control",
+    "Crypto flow clarity",
+    "Finance + banking visibility",
+    "Ad process rhythm",
+    "Signature delivery standard",
+  ],
+  trustMetrics: [
+    {
+      label: "Fast Response",
+      value: 96,
+      summary: "Clear plan shortly after first DM",
+    },
+    {
+      label: "Process Visibility",
+      value: 94,
+      summary: "Crypto + finance + ad streams under one flow",
+    },
+    {
+      label: "Delivery Discipline",
+      value: 98,
+      summary: "Clean and consistent execution cadence",
+    },
+  ],
+  quoteWizard: {
+    title: "Offer Wizard",
+    intro: "Choose in 3 steps and send a ready message directly to Telegram.",
+    stepLabels: ["Service", "Budget", "Timeline", "Note"],
+    prompts: {
+      service: "Which main area do you need?",
+      budget: "What is your budget range?",
+      timeline: "How fast should we start?",
+      note: "Leave a short note (optional)",
+    },
+    options: {
+      services: [
+        "Script pack / setup",
+        "Crypto process structure",
+        "Finance + banking flow",
+        "Ad operations control",
+      ],
+      budgets: ["10k - 25k", "25k - 50k", "50k - 100k", "100k+"],
+      timelines: ["Urgent (24h)", "This week", "This month", "Planned launch"],
+    },
+    notePlaceholder: "A single-line goal is enough.",
+    buttons: {
+      back: "Back",
+      next: "Next",
+      send: "Send to Telegram",
+    },
+    readyLabel: "Ready message",
+  },
   highlights: ["Script sales flow", "Crypto tracking", "Finance visibility", "Ad control", "Premium delivery"],
   counterMetrics: [
     { label: "Active Since", value: 2017, suffix: "+" },
@@ -662,6 +852,8 @@ const enConfig: SiteConfig = {
   contactLine:
     "If you are looking through a client lens, you are in the right place. Send a message and we launch with a clear plan.",
   contactHint: "First message format: service type + target + timeline",
+  finalCtaEyebrow: "Final CTA",
+  finalCtaLine: "Share the target clearly and we will map the fastest execution flow without noise.",
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Quick Commands",
   commandHint: "Ctrl/Cmd + K",
@@ -677,6 +869,9 @@ const enConfig: SiteConfig = {
     previous: "Previous",
     next: "Next",
     progress: "Progress",
+    eyebrow: "signature case",
+    keyboardHint: "Esc closes • Arrow keys navigate cards",
+    sceneNote: "This card is a compact operation brief showing how messy flow becomes controlled execution.",
   },
   seo: {
     title: "Don Salvatore is a brand | Script, Crypto and Finance",
@@ -686,6 +881,13 @@ const enConfig: SiteConfig = {
       "Consistent quality from Discord to Telegram: script packs, crypto-finance structure, ad process control and web systems.",
     twitterDescription:
       "A signature page focused on script services, crypto-finance flow and ad operation clarity.",
+    keywords: [
+      "Salvatore",
+      "script packs",
+      "crypto flow management",
+      "finance operations support",
+      "ad operations management",
+    ],
   },
   socials: baseSocials,
 };

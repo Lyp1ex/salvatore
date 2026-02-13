@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
+import SignatureReel from "../components/SignatureReel";
+import TrustMetricsBar from "../components/TrustMetricsBar";
 import type { SiteConfig } from "../config/site";
 
 type HeroProps = {
@@ -32,7 +34,10 @@ export default function Hero({ site }: HeroProps) {
         </span>
 
         <div className="relative mt-5">
-          <motion.h1 style={{ y: foregroundY }} className="signature-name relative z-10 text-6xl font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl">
+          <motion.h1
+            style={{ y: foregroundY }}
+            className="signature-name relative z-10 text-6xl font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl"
+          >
             {site.displayName}
           </motion.h1>
           <motion.h1
@@ -59,6 +64,8 @@ export default function Hero({ site }: HeroProps) {
         <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">
           {site.heroSignatureLine}
         </p>
+
+        <SignatureReel words={site.reelWords} />
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-3">
           <motion.div
@@ -99,6 +106,8 @@ export default function Hero({ site }: HeroProps) {
             </motion.div>
           ))}
         </div>
+
+        <TrustMetricsBar metrics={site.trustMetrics} />
       </motion.div>
     </section>
   );
