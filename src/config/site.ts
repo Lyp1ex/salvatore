@@ -78,7 +78,6 @@ export type SiteConfig = {
   proofIntro: string;
   proofPillars: ProofPillar[];
   highlights: string[];
-  floatingBadges: string[];
   counterMetrics: CounterMetric[];
   contactTitle: string;
   contactLine: string;
@@ -297,7 +296,6 @@ const trConfig: SiteConfig = {
     "Reklam süreç kontrolü",
     "Premium teslim",
   ],
-  floatingBadges: ["Private Flow", "Fast Delivery", "Premium Build"],
   counterMetrics: [
     { label: "Sahnede", value: 2017, suffix: "+" },
     { label: "Teslim", value: 24, suffix: "s" },
@@ -488,7 +486,6 @@ const enConfig: SiteConfig = {
     },
   ],
   highlights: ["Script sales flow", "Crypto tracking", "Finance visibility", "Ad control", "Premium delivery"],
-  floatingBadges: ["Private Flow", "Fast Delivery", "Premium Build"],
   counterMetrics: [
     { label: "Active Since", value: 2017, suffix: "+" },
     { label: "Delivery", value: 24, suffix: "h" },

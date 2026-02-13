@@ -31,18 +31,6 @@ export default function Hero({ site }: HeroProps) {
           DS
         </div>
 
-        {site.floatingBadges.map((badge, index) => (
-          <motion.div
-            key={badge}
-            aria-hidden
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4 + index * 0.8, repeat: Infinity, ease: "easeInOut" }}
-            className={`floating-badge floating-badge-${index + 1}`}
-          >
-            {badge}
-          </motion.div>
-        ))}
-
         <span className="inline-flex rounded-full border border-[rgba(212,176,93,.45)] bg-[rgba(212,176,93,.14)] px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--lux-cream)]">
           {site.statusChip}
         </span>

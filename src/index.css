@@ -67,36 +67,6 @@ body {
   pointer-events: none;
 }
 
-.floating-badge {
-  position: absolute;
-  border: 1px solid rgba(212, 176, 93, 0.28);
-  background: rgba(8, 10, 14, 0.62);
-  color: var(--lux-cream);
-  border-radius: 9999px;
-  padding: 0.25rem 0.7rem;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  box-shadow: 0 0 18px rgba(212, 176, 93, 0.16);
-  pointer-events: none;
-}
-
-.floating-badge-1 {
-  right: 2rem;
-  top: 8.2rem;
-}
-
-.floating-badge-2 {
-  right: 8.5rem;
-  top: 13rem;
-}
-
-.floating-badge-3 {
-  right: 2.6rem;
-  top: 18rem;
-}
-
 .hero-shell::after {
   content: "";
   position: absolute;
@@ -361,10 +331,6 @@ body {
 
   .hero-monogram {
     right: 0.8rem;
-  }
-
-  .floating-badge {
-    display: none;
   }
 }
 
