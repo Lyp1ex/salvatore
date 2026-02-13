@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Card from "../components/Card";
+import ProofStrip from "../components/ProofStrip";
 import SectionTitle from "../components/SectionTitle";
 import type { SiteConfig } from "../config/site";
 
@@ -19,7 +20,9 @@ export default function Proof({ site }: ProofProps) {
         <SectionTitle title={site.proofTitle} eyebrow={site.proofEyebrow} />
         <p className="mb-6 max-w-3xl text-zinc-300">{site.proofIntro}</p>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <ProofStrip quotes={site.proofQuotes} />
+
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
           {site.proofPillars.map((item, index) => (
             <motion.div
               key={item.title}
@@ -28,7 +31,7 @@ export default function Proof({ site }: ProofProps) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.06 }}
             >
-              <Card className="glass-distort h-full">
+              <Card className="h-full border-[rgba(212,176,93,.24)]">
                 <h3 className="text-xl font-bold text-zinc-100">{item.title}</h3>
                 <p className="mt-3 leading-relaxed text-zinc-300">{item.detail}</p>
               </Card>

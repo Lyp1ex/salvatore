@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import AmbientLight from "./components/AmbientLight";
 import BackgroundFX from "./components/BackgroundFX";
-import CommandPalette from "./components/CommandPalette";
 import LuxuryCursor from "./components/LuxuryCursor";
+import MobileStickyCTA from "./components/MobileStickyCTA";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import StorylineRail from "./components/StorylineRail";
@@ -14,6 +14,8 @@ import Hero from "./sections/Hero";
 import Process from "./sections/Process";
 import Proof from "./sections/Proof";
 import Work from "./sections/Work";
+
+const CommandPalette = lazy(() => import("./components/CommandPalette"));
 
 const upsertMeta = (key: "name" | "property", value: string, content: string) => {
   const selector = `meta[${key}="${value}"]`;
@@ -73,6 +75,7 @@ export default function App() {
 
   useEffect(() => {
     window.localStorage.setItem("site-locale", locale);
+    document.documentElement.lang = locale;
   }, [locale]);
 
   const site = useMemo(() => siteConfigs[locale], [locale]);
@@ -82,8 +85,10 @@ export default function App() {
     upsertMeta("name", "description", site.seo.description);
     upsertMeta("property", "og:title", site.seo.title);
     upsertMeta("property", "og:description", site.seo.ogDescription);
+    upsertMeta("property", "og:image", "/og-card.svg");
     upsertMeta("name", "twitter:title", site.seo.title);
     upsertMeta("name", "twitter:description", site.seo.twitterDescription);
+    upsertMeta("name", "twitter:image", "/og-card.svg");
 
     const timer = window.setTimeout(() => setIsBooting(false), 1400);
     return () => window.clearTimeout(timer);
@@ -116,9 +121,14 @@ export default function App() {
       <LuxuryCursor />
       <ScrollProgress />
       <StorylineRail />
-      <Navbar site={site} locale={locale} onToggleLocale={onToggleLocale} onOpenCommand={() => setIsCommandOpen(true)} />
+      <Navbar
+        site={site}
+        locale={locale}
+        onToggleLocale={onToggleLocale}
+        onOpenCommand={() => setIsCommandOpen(true)}
+      />
 
-      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-10 pt-20 sm:px-6 md:pt-24">
+      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6 md:pb-10 md:pt-24">
         <Hero site={site} />
         <div className="section-divider" />
         <About site={site} />
@@ -132,14 +142,20 @@ export default function App() {
         <Contact site={site} />
       </main>
 
-      <CommandPalette
-        open={isCommandOpen}
-        site={site}
-        locale={locale}
-        onClose={() => setIsCommandOpen(false)}
-        onNavigate={onNavigate}
-        onToggleLocale={onToggleLocale}
-      />
+      <MobileStickyCTA site={site} />
+
+      {isCommandOpen ? (
+        <Suspense fallback={null}>
+          <CommandPalette
+            open={isCommandOpen}
+            site={site}
+            locale={locale}
+            onClose={() => setIsCommandOpen(false)}
+            onNavigate={onNavigate}
+            onToggleLocale={onToggleLocale}
+          />
+        </Suspense>
+      ) : null}
 
       <BootOverlay visible={isBooting} title={site.displayName} />
     </div>

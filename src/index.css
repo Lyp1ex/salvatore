@@ -189,6 +189,37 @@ body {
   opacity: 1;
 }
 
+.lux-sweep-card,
+.lux-sweep-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.lux-sweep-card::after,
+.lux-sweep-btn::after {
+  content: "";
+  position: absolute;
+  inset: -140% auto auto -22%;
+  width: 35%;
+  height: 360%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(241, 228, 197, 0.24),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  pointer-events: none;
+}
+
+.lux-sweep-card:hover::after,
+.lux-sweep-btn:hover::after {
+  opacity: 1;
+  animation: sweep-pass 0.9s ease;
+}
+
 .cta-orbit {
   position: relative;
   display: inline-flex;
@@ -205,6 +236,52 @@ body {
 
 .cta-orbit-ring-delay {
   animation-delay: 1.2s;
+}
+
+.mobile-cta-glow {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.44), 0 0 22px rgba(212, 176, 93, 0.3);
+}
+
+.proof-track {
+  animation: proof-marquee 34s linear infinite;
+}
+
+.proof-track:hover {
+  animation-play-state: paused;
+}
+
+.proof-fade-edge-left {
+  background: linear-gradient(to right, rgba(7, 8, 12, 0.96), rgba(7, 8, 12, 0));
+}
+
+.proof-fade-edge-right {
+  background: linear-gradient(to left, rgba(7, 8, 12, 0.96), rgba(7, 8, 12, 0));
+}
+
+.contact-pulse {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(18px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.contact-pulse-one {
+  width: 420px;
+  height: 420px;
+  top: -180px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(212, 176, 93, 0.62) 0%, rgba(212, 176, 93, 0) 70%);
+  animation: pulse-float 7s ease-in-out infinite;
+}
+
+.contact-pulse-two {
+  width: 300px;
+  height: 300px;
+  bottom: -120px;
+  left: 10%;
+  background: radial-gradient(circle, rgba(120, 213, 199, 0.5) 0%, rgba(120, 213, 199, 0) 72%);
+  animation: pulse-float 9s ease-in-out infinite reverse;
 }
 
 .lux-cursor-ring {
@@ -319,11 +396,45 @@ body {
   }
 }
 
+@keyframes sweep-pass {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes proof-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 @media (max-width: 640px) {
   .blob {
     width: 24rem;
     height: 24rem;
     filter: blur(82px);
+  }
+
+  .mobile-cta-glow {
+    margin-bottom: env(safe-area-inset-bottom);
   }
 }
 
@@ -337,7 +448,9 @@ body {
   .hero-shell::before,
   .hero-shell::after,
   .grid-layer,
-  .cta-orbit-ring {
+  .cta-orbit-ring,
+  .proof-track,
+  .contact-pulse {
     animation: none !important;
   }
 }

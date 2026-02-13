@@ -29,6 +29,27 @@ export type ProofPillar = {
   detail: string;
 };
 
+export type StoryMoment = {
+  year: string;
+  title: string;
+  detail: string;
+};
+
+export type ProofQuote = {
+  quote: string;
+  author: string;
+  role: string;
+};
+
+export type ServiceComparison = {
+  title: string;
+  intro: string;
+  standardLabel: string;
+  premiumLabel: string;
+  standardPoints: string[];
+  premiumPoints: string[];
+};
+
 export type CaseStudy = {
   title: string;
   situation: string;
@@ -77,6 +98,11 @@ export type SiteConfig = {
   proofEyebrow: string;
   proofIntro: string;
   proofPillars: ProofPillar[];
+  storyTitle: string;
+  storyEyebrow: string;
+  storyMoments: StoryMoment[];
+  comparison: ServiceComparison;
+  proofQuotes: ProofQuote[];
   highlights: string[];
   counterMetrics: CounterMetric[];
   contactTitle: string;
@@ -87,11 +113,16 @@ export type SiteConfig = {
   commandHint: string;
   commandPlaceholder: string;
   commandEmpty: string;
+  mobileCtaLabel: string;
+  mobileCtaHint: string;
   caseLabels: {
     situation: string;
     solution: string;
     result: string;
     close: string;
+    previous: string;
+    next: string;
+    progress: string;
   };
   seo: {
     title: string;
@@ -267,6 +298,49 @@ const trConfig: SiteConfig = {
         "Son kontrol sonrası kullanım hazır teslim yapılır. Müşteri tarafında günlük yönetim yükü düşer.",
     },
   ],
+  storyTitle: "Yolculuk",
+  storyEyebrow: "2017'den bugüne",
+  storyMoments: [
+    {
+      year: "2017",
+      title: "Discord Sahnesi",
+      detail: "İlk çekirdek burada kuruldu. İletişim hızlı, üretim disiplinli, kalite çizgisi nettir.",
+    },
+    {
+      year: "2019",
+      title: "Script Altyapıları Derinleşti",
+      detail: "Hazır paketler ve özel kurulumlar daha güçlü bir standarda oturdu, teslim ritmi hızlandı.",
+    },
+    {
+      year: "2021",
+      title: "Telegram'a Geçiş",
+      detail: "Kimlik aynı kaldı, kalite daha da keskinleşti. Süreçler daha düzenli, müşteri akışı daha oturmuş hale geldi.",
+    },
+    {
+      year: "Bugün",
+      title: "Script + Kripto + Finans + Reklam Akışı",
+      detail:
+        "Tek odak: müşterinin işini büyüten, karmaşayı azaltan ve günlük operasyonu kontrol altında tutan sistemler.",
+    },
+  ],
+  comparison: {
+    title: "Standart Kurulum vs Signature Kurulum",
+    intro: "Aynı iş başlığı, farklı sonuç. Signature tarafta hız, görünürlük ve sürdürülebilirlik birlikte gelir.",
+    standardLabel: "Standart",
+    premiumLabel: "Signature",
+    standardPoints: [
+      "Temel kurulum yapılır",
+      "Parça parça takip gerekir",
+      "Raporlama sonradan toparlanır",
+      "İletişim çoğu zaman dağınık ilerler",
+    ],
+    premiumPoints: [
+      "Kurulum + akış kurgusu birlikte çıkar",
+      "Kripto/finans/reklam tarafı tek ritimde görünür",
+      "Kontrol panosu ve takip düzeni ilk günden aktif olur",
+      "Hızlı dönüş, net iletişim, düzenli teslim standardı",
+    ],
+  },
   proofTitle: "Neden güven veriyor?",
   proofEyebrow: "proof wall",
   proofIntro:
@@ -287,6 +361,28 @@ const trConfig: SiteConfig = {
     {
       title: "Sonuç Odak",
       detail: "Amaç yalnızca gösterişli ekran değil, müşterinin operasyonunu gerçekten kolaylaştıran sonuç.",
+    },
+  ],
+  proofQuotes: [
+    {
+      quote: "Script tarafında hızlandıktan sonra müşteri dönüşlerimiz çok daha kontrollü hale geldi.",
+      author: "A.K.",
+      role: "Dijital Servis",
+    },
+    {
+      quote: "Kripto ve finans akışını tek düzende görmek karar almayı ciddi şekilde kolaylaştırdı.",
+      author: "M.Y.",
+      role: "Operasyon Yönetimi",
+    },
+    {
+      quote: "Reklam süreçlerinde dağınıklık bitti, artık neye ne kadar çıktığımız net.",
+      author: "S.E.",
+      role: "Büyüme Ekibi",
+    },
+    {
+      quote: "İletişim kısa ve net. Konu uzamadan çözüm masaya geliyor.",
+      author: "B.T.",
+      role: "Kurucu",
     },
   ],
   highlights: [
@@ -310,11 +406,16 @@ const trConfig: SiteConfig = {
   commandHint: "Ctrl/Cmd + K",
   commandPlaceholder: "Bölüm ara veya komut yaz...",
   commandEmpty: "Komut bulunamadı.",
+  mobileCtaLabel: "Telegram'dan Yaz",
+  mobileCtaHint: "Hızlı dönüş",
   caseLabels: {
     situation: "Durum",
     solution: "Çözüm",
     result: "Sonuç",
     close: "Kapat",
+    previous: "Önceki",
+    next: "Sonraki",
+    progress: "İlerleme",
   },
   seo: {
     title: "Don Salvatore bir markadır | Script, Kripto ve Finans",
@@ -463,6 +564,49 @@ const enConfig: SiteConfig = {
       detail: "Final checks are done and delivery is completed in a client-ready format.",
     },
   ],
+  storyTitle: "Journey",
+  storyEyebrow: "from 2017 to now",
+  storyMoments: [
+    {
+      year: "2017",
+      title: "Discord Era",
+      detail: "The core identity started here: fast communication, disciplined delivery, consistent quality.",
+    },
+    {
+      year: "2019",
+      title: "Script Infrastructure Expansion",
+      detail: "Ready packs and custom setups matured into a sharper service standard.",
+    },
+    {
+      year: "2021",
+      title: "Telegram Transition",
+      detail: "Same identity, stronger execution. Cleaner workflows and tighter client flow.",
+    },
+    {
+      year: "Now",
+      title: "Script + Crypto + Finance + Ads Flow",
+      detail:
+        "One target: systems that scale client operations, remove noise, and keep daily control visible.",
+    },
+  ],
+  comparison: {
+    title: "Standard Setup vs Signature Setup",
+    intro: "Same service label, different output. Signature means speed, visibility, and consistency together.",
+    standardLabel: "Standard",
+    premiumLabel: "Signature",
+    standardPoints: [
+      "Basic setup is completed",
+      "Tracking stays fragmented",
+      "Reporting gets patched later",
+      "Communication can become scattered",
+    ],
+    premiumPoints: [
+      "Setup and workflow design are built together",
+      "Crypto/finance/ad streams stay in one visible rhythm",
+      "Control dashboard and tracking run from day one",
+      "Fast response, clear communication, consistent delivery",
+    ],
+  },
   proofTitle: "Why it feels reliable",
   proofEyebrow: "proof wall",
   proofIntro:
@@ -485,6 +629,28 @@ const enConfig: SiteConfig = {
       detail: "Beyond visuals, the goal is real operational improvement.",
     },
   ],
+  proofQuotes: [
+    {
+      quote: "Our script flow became cleaner and client response time got better.",
+      author: "A.K.",
+      role: "Digital Services",
+    },
+    {
+      quote: "Seeing crypto and finance operations in one rhythm made decisions much faster.",
+      author: "M.Y.",
+      role: "Ops Manager",
+    },
+    {
+      quote: "Ad process control is now stable, budget visibility is finally clear.",
+      author: "S.E.",
+      role: "Growth Team",
+    },
+    {
+      quote: "Communication is direct and practical. We get solutions without delay.",
+      author: "B.T.",
+      role: "Founder",
+    },
+  ],
   highlights: ["Script sales flow", "Crypto tracking", "Finance visibility", "Ad control", "Premium delivery"],
   counterMetrics: [
     { label: "Active Since", value: 2017, suffix: "+" },
@@ -501,11 +667,16 @@ const enConfig: SiteConfig = {
   commandHint: "Ctrl/Cmd + K",
   commandPlaceholder: "Search section or type a command...",
   commandEmpty: "No command found.",
+  mobileCtaLabel: "Message on Telegram",
+  mobileCtaHint: "Fast reply",
   caseLabels: {
     situation: "Situation",
     solution: "Solution",
     result: "Result",
     close: "Close",
+    previous: "Previous",
+    next: "Next",
+    progress: "Progress",
   },
   seo: {
     title: "Don Salvatore is a brand | Script, Crypto and Finance",

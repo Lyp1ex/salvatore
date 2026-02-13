@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="87" y1="54" x2="1114" y2="579" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#14181f"/>
+      <stop offset="0.48" stop-color="#08090d"/>
+      <stop offset="1" stop-color="#060608"/>
+    </linearGradient>
+    <linearGradient id="line" x1="221" y1="166" x2="979" y2="529" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d7bf84" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#78d5c7" stop-opacity=".5"/>
+    </linearGradient>
+    <filter id="blur" x="0" y="0" width="1200" height="630" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="48"/>
+    </filter>
+    <pattern id="mono" width="210" height="118" patternUnits="userSpaceOnUse">
+      <text x="22" y="70" font-family="Georgia,serif" font-size="34" font-style="italic" fill="rgba(241,228,197,0.12)">DS • DS</text>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#mono)" opacity="0.34"/>
+  <g filter="url(#blur)">
+    <circle cx="260" cy="96" r="190" fill="#d7bf84" fill-opacity=".2"/>
+    <circle cx="940" cy="166" r="170" fill="#78d5c7" fill-opacity=".14"/>
+  </g>
+  <rect x="84" y="72" width="1032" height="486" rx="32" fill="rgba(8,10,14,0.55)" stroke="url(#line)"/>
+  <text x="132" y="220" font-family="'Playfair Display', Georgia, serif" font-size="84" font-style="italic" fill="#f5f7fa">Salvatoré</text>
+  <text x="132" y="286" font-family="Sora, Arial, sans-serif" font-size="40" font-weight="700" fill="#f1e4c5">Don Salvatore bir markadır.</text>
+  <text x="132" y="354" font-family="Sora, Arial, sans-serif" font-size="30" fill="#ced5df">Script • Kripto • Finans • Reklam</text>
+  <text x="132" y="432" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="2" fill="#d7bf84">2017'DEN BERİ AKTİF</text>
+  <text x="132" y="486" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="2" fill="#c2c9d2">t.me/donsalvatoree</text>
+  <text x="132" y="522" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="2" fill="#c2c9d2">instagram.com/donsalvatoore</text>
+</svg>
