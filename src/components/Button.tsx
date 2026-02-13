@@ -21,13 +21,13 @@ type NativeButtonProps = SharedProps &
 type ButtonProps = LinkProps | NativeButtonProps;
 
 const baseClass =
-  "lux-sweep-btn inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 disabled:cursor-not-allowed disabled:opacity-55";
+  "lux-sweep-btn inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold tracking-[0.02em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(201,173,112,.35)] disabled:cursor-not-allowed disabled:opacity-55";
 
 const variantClass: Record<Variant, string> = {
   primary:
-    "border border-[rgba(196,164,92,.62)] bg-[linear-gradient(112deg,var(--lux-gold),#d7bc73,var(--lux-gold-soft))] text-[#14110a] shadow-[0_0_28px_rgba(196,164,92,.3)] hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(196,164,92,.42)]",
+    "border border-[rgba(196,164,92,.55)] bg-[linear-gradient(130deg,#d0b178,#b99252,#9b753f)] text-[#19150f] shadow-[0_10px_30px_rgba(0,0,0,.38)] hover:border-[rgba(212,176,93,.78)] hover:brightness-105",
   ghost:
-    "border border-[rgba(212,176,93,.25)] bg-[rgba(255,255,255,.04)] text-zinc-100 backdrop-blur-sm hover:-translate-y-0.5 hover:border-[rgba(212,176,93,.5)] hover:bg-[rgba(212,176,93,.08)]",
+    "border border-[rgba(212,176,93,.28)] bg-[rgba(255,255,255,.03)] text-zinc-100 backdrop-blur-sm hover:border-[rgba(212,176,93,.5)] hover:bg-[rgba(212,176,93,.08)]",
 };
 
 const mergeClass = (variant: Variant, className?: string) =>

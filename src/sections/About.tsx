@@ -47,7 +47,7 @@ export default function About({ site }: AboutProps) {
               <ul className="mt-4 space-y-2 text-sm text-zinc-300">
                 {site.quickFacts.map((fact) => (
                   <li key={fact} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--lux-gold-soft)]" />
                     <span>{fact}</span>
                   </li>
                 ))}

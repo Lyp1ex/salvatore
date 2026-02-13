@@ -21,7 +21,7 @@ export default function Process({ site }: ProcessProps) {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-[1.25fr_.95fr]">
-          <div className="relative overflow-hidden rounded-3xl border border-[rgba(212,176,93,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.06),rgba(10,11,14,.82))] p-5 shadow-[0_20px_70px_rgba(0,0,0,.48)] sm:p-6">
+          <div className="relative overflow-hidden rounded-3xl border border-[rgba(212,176,93,.24)] bg-[linear-gradient(150deg,rgba(17,19,24,.9),rgba(9,10,13,.96))] p-5 shadow-[0_20px_70px_rgba(0,0,0,.5)] sm:p-6">
             <div className="absolute bottom-6 left-4 top-6 w-[2px] bg-white/10 sm:left-7" />
             <div className="absolute bottom-6 left-4 top-6 w-[2px] bg-[linear-gradient(180deg,var(--lux-gold),var(--lux-mint))] sm:left-7" />
 
@@ -33,7 +33,7 @@ export default function Process({ site }: ProcessProps) {
                   whileInView={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0 round 16px)" }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.45, delay: index * 0.06 }}
-                  className="relative ml-0 rounded-2xl border border-white/10 bg-black/25 p-4 sm:ml-4"
+                  className="relative ml-0 rounded-2xl border border-white/10 bg-[rgba(11,13,18,.78)] p-4 sm:ml-4"
                 >
                   <span className="absolute -left-[14px] top-5 h-3 w-3 rounded-full border border-[var(--lux-gold-soft)] bg-[var(--lux-gold)] shadow-[0_0_16px_rgba(212,176,93,.5)] sm:-left-[26px]" />
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--lux-gold-soft)]">{moment.year}</p>

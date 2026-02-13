@@ -16,7 +16,7 @@ export default function Card({ className, children }: CardProps) {
   return (
     <article
       onMouseMove={onMouseMove}
-      className={`glass-distort lux-sweep-card rounded-2xl border border-[rgba(212,176,93,.16)] bg-[linear-gradient(140deg,rgba(255,255,255,.06),rgba(11,13,17,.74))] p-5 shadow-[0_16px_40px_rgba(0,0,0,.45)] backdrop-blur-xl transition-colors duration-200 ${className ?? ""}`}
+      className={`glass-distort lux-sweep-card rounded-2xl border border-[rgba(201,173,112,.22)] bg-[linear-gradient(145deg,rgba(20,22,28,.82),rgba(11,13,17,.94))] p-5 shadow-[0_18px_48px_rgba(0,0,0,.5)] backdrop-blur-xl transition-colors duration-200 ${className ?? ""}`}
     >
       {children}
     </article>

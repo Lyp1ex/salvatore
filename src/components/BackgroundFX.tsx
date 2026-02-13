@@ -9,7 +9,7 @@ type Particle = {
   alpha: number;
 };
 
-const colors = ["#d4b05d", "#9abac5", "#7bd7c8", "#8f9aa5"];
+const colors = ["#b9965a", "#8a95a3", "#6b7482", "#9a8868"];
 
 const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
@@ -101,8 +101,8 @@ export default function BackgroundFX({ lite = false }: BackgroundFXProps) {
       <div className="blob blob-one" />
       <div className="blob blob-two" />
       <div className="blob blob-three" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,176,93,0.14)_0%,_transparent_45%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,_rgba(123,215,200,0.1)_0%,_transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(185,150,90,0.14)_0%,_transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_18%,_rgba(138,149,163,0.12)_0%,_transparent_42%)]" />
       <div className="grid-layer absolute inset-0" />
       <div className="noise-layer absolute inset-0" />
       {lite ? null : <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-35" />}

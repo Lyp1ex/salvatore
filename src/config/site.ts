@@ -279,7 +279,7 @@ const trConfig: SiteConfig = {
   workTitle: "Hizmet Alanları",
   workEyebrow: "hizmet kapsamı",
   workIntro:
-    "Hizmetlerin tamamı net operasyon, hızlı teslim ve sürdürülebilir düzen hedefiyle kurgulanır.",
+    "Hedef: net operasyon, hızlı teslim ve sürdürülebilir düzen.",
   serviceFilters: [
     { id: "all", label: "Hepsi" },
     { id: "script", label: "Script" },
@@ -728,7 +728,7 @@ const enConfig: SiteConfig = {
   workTitle: "Service Scope",
   workEyebrow: "operations",
   workIntro:
-    "Every service below targets one thing: speed up client execution, remove chaos, and make operations manageable.",
+    "Focused on clear operations, fast delivery, and sustainable structure.",
   serviceFilters: [
     { id: "all", label: "All" },
     { id: "script", label: "Script" },

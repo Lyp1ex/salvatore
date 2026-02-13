@@ -189,7 +189,7 @@ export default function App() {
           onOpenCommand={() => setIsCommandOpen(true)}
         />
 
-        <main className="relative z-10 mx-auto max-w-6xl px-3 pb-32 pt-24 sm:px-5 md:pb-12 md:pt-28">
+        <main className="relative z-10 mx-auto max-w-[1180px] px-3 pb-32 pt-24 sm:px-5 md:pb-12 md:pt-28">
           <Hero site={site} />
           <div className="section-divider" />
           <About site={site} />

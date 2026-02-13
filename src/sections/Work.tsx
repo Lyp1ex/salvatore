@@ -61,10 +61,10 @@ export default function Work({ site }: WorkProps) {
                 key={filter.id}
                 type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ${
+                className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ${
                   active
-                    ? "border-[rgba(212,176,93,.64)] bg-[rgba(212,176,93,.14)] text-[var(--lux-cream)]"
-                    : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-[rgba(212,176,93,.32)]"
+                    ? "border-[rgba(212,176,93,.64)] bg-[rgba(212,176,93,.16)] text-[var(--lux-cream)]"
+                    : "border-white/10 bg-[rgba(14,16,21,.76)] text-zinc-300 hover:border-[rgba(212,176,93,.32)]"
                 }`}
               >
                 {filter.label}
@@ -84,14 +84,15 @@ export default function Work({ site }: WorkProps) {
                 exit={{ opacity: 0, y: 14, scale: 0.98 }}
                 transition={{ duration: 0.32, delay: index * 0.03 }}
               >
-                <Card className="h-full border-[rgba(212,176,93,.22)] transition duration-200 hover:border-[rgba(212,176,93,.38)] hover:shadow-[0_12px_30px_rgba(0,0,0,.35)]">
+                <Card className="relative h-full border-[rgba(212,176,93,.24)] transition duration-200 hover:border-[rgba(212,176,93,.42)]">
+                  <div className="mb-4 h-px w-full bg-[linear-gradient(90deg,rgba(212,176,93,.38),rgba(124,140,158,.2),rgba(255,255,255,0))]" />
                   <h3 className="text-lg font-bold text-zinc-100">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-300">{service.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-zinc-700/70 bg-zinc-900/60 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide text-zinc-300"
+                        className="rounded-md border border-zinc-700/70 bg-zinc-900/60 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide text-zinc-300"
                       >
                         {tag}
                       </span>

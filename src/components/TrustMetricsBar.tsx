@@ -15,7 +15,7 @@ export default function TrustMetricsBar({ metrics }: TrustMetricsBarProps) {
           whileInView={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0 round 16px)" }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.42, delay: index * 0.06 }}
-          className="rounded-2xl border border-[rgba(212,176,93,.22)] bg-[rgba(7,9,12,.68)] p-3"
+          className="rounded-xl border border-[rgba(212,176,93,.22)] bg-[rgba(9,11,15,.82)] p-3"
         >
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm font-semibold text-zinc-100">{metric.label}</p>
