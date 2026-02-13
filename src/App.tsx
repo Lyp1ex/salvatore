@@ -2,10 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import BackgroundFX from "./components/BackgroundFX";
 import Navbar from "./components/Navbar";
+import ScrollProgress from "./components/ScrollProgress";
 import { siteConfig } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
+import Process from "./sections/Process";
 import Work from "./sections/Work";
 
 const upsertMeta = (key: "name" | "property", value: string, content: string) => {
@@ -30,9 +32,10 @@ function BootOverlay({ visible }: { visible: boolean }) {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.45, ease: "easeOut" } }}
-          className="pointer-events-none fixed inset-0 z-[80] bg-[#040509]"
+          className="pointer-events-none fixed inset-0 z-[80] bg-[#050507]"
         >
           <div className="scanline-layer absolute inset-0" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_24%,_rgba(212,176,93,.16),_transparent_45%)]" />
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,8 +45,10 @@ function BootOverlay({ visible }: { visible: boolean }) {
             <p className="font-mono text-xs uppercase tracking-[0.32em] text-zinc-400">
               kimlik senkronlanıyor
             </p>
-            <h2 className="text-4xl font-extrabold text-zinc-100 sm:text-5xl">{siteConfig.displayName}</h2>
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan-200/70">
+            <h2 className="signature-name text-4xl font-extrabold italic text-zinc-100 sm:text-5xl">
+              {siteConfig.displayName}
+            </h2>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--lux-gold-soft)]">
               sinyal kilitlendi • 2017+
             </p>
           </motion.div>
@@ -71,12 +76,18 @@ export default function App() {
   return (
     <div className="relative min-h-screen text-zinc-100">
       <BackgroundFX />
+      <ScrollProgress />
       <Navbar />
 
       <main className="relative z-10 mx-auto max-w-6xl px-4 pb-10 pt-20 sm:px-6 md:pt-24">
         <Hero />
+        <div className="section-divider" />
         <About />
+        <div className="section-divider" />
         <Work />
+        <div className="section-divider" />
+        <Process />
+        <div className="section-divider" />
         <Contact />
       </main>
 

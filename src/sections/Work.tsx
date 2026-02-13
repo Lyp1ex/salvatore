@@ -13,6 +13,10 @@ export default function Work() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <SectionTitle title="Ne yapıyorum?" eyebrow="servisler" />
+        <p className="mb-6 max-w-3xl text-zinc-300">
+          Buradaki bütün hizmetler tek hedefe oynar: müşterinin işini hızlandırmak, dağınıklığı toplamak, süreci
+          görünür ve yönetilebilir hale getirmek.
+        </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {siteConfig.services.map((service, index) => (

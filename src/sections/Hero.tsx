@@ -10,9 +10,9 @@ export default function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.45 }}
         transition={{ duration: 0.55, ease: "easeOut" }}
-        className="hero-shell rounded-3xl border border-white/10 bg-white/[0.045] px-5 py-10 shadow-neon backdrop-blur-xl sm:px-8 sm:py-14"
+        className="hero-shell rounded-3xl border border-[rgba(196,164,92,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.08),rgba(10,11,14,.8))] px-5 py-10 shadow-neon backdrop-blur-xl sm:px-8 sm:py-14"
       >
-        <span className="inline-flex rounded-full border border-emerald-300/40 bg-emerald-300/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-emerald-200">
+        <span className="inline-flex rounded-full border border-[rgba(212,176,93,.45)] bg-[rgba(212,176,93,.14)] px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--lux-cream)]">
           {siteConfig.statusChip}
         </span>
 
@@ -20,7 +20,7 @@ export default function Hero() {
           {siteConfig.displayName}
         </h1>
 
-        <p className="mt-3 text-xl font-semibold text-zinc-100 sm:text-2xl">{siteConfig.slogan}</p>
+        <p className="lux-title mt-3 text-xl font-semibold sm:text-2xl">{siteConfig.slogan}</p>
         <p className="mt-6 max-w-2xl text-lg text-zinc-200 sm:text-xl">{siteConfig.tagline}</p>
         <p className="mt-3 max-w-2xl font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
           {siteConfig.microLine}
@@ -34,6 +34,9 @@ export default function Hero() {
             Neler Yapıyorum?
           </Button>
         </div>
+        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">
+          Signature akış: Script + Kripto + Finans + Reklam
+        </p>
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-3">
           <motion.div

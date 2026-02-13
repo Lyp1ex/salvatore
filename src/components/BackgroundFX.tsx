@@ -9,7 +9,7 @@ type Particle = {
   alpha: number;
 };
 
-const colors = ["#c4d0d8", "#91cfc4", "#8ea9b4", "#95f0dc"];
+const colors = ["#d4b05d", "#9abac5", "#7bd7c8", "#8f9aa5"];
 
 const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
@@ -17,8 +17,8 @@ const createParticles = (count: number, width: number, height: number): Particle
   Array.from({ length: count }, () => ({
     x: random(0, width),
     y: random(0, height),
-    vx: random(-0.18, 0.18),
-    vy: random(-0.12, 0.12),
+    vx: random(-0.12, 0.12),
+    vy: random(-0.08, 0.08),
     size: random(0.8, 2.6),
     alpha: random(0.16, 0.48),
   }));
@@ -95,7 +95,9 @@ export default function BackgroundFX() {
       <div className="blob blob-one" />
       <div className="blob blob-two" />
       <div className="blob blob-three" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(173,255,233,0.12)_0%,_transparent_42%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,176,93,0.14)_0%,_transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,_rgba(123,215,200,0.1)_0%,_transparent_40%)]" />
+      <div className="grid-layer absolute inset-0" />
       <div className="noise-layer absolute inset-0" />
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-55" />
     </div>

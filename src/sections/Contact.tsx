@@ -16,10 +16,13 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-neon backdrop-blur-xl sm:p-9"
+        className="rounded-3xl border border-[rgba(196,164,92,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.08),rgba(10,11,14,.8))] p-6 shadow-neon backdrop-blur-xl sm:p-9"
       >
         <h2 className="text-3xl font-extrabold text-zinc-100 sm:text-4xl">İletişim</h2>
         <p className="mt-4 max-w-2xl text-zinc-300">{siteConfig.contactLine}</p>
+        <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--lux-gold-soft)]">
+          İlk mesaj formatı: hizmet türü + hedef + süre
+        </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
           {socialList.map((social) => (
@@ -28,7 +31,7 @@ export default function Contact() {
               href={social.url}
               target="_blank"
               rel="noreferrer"
-              variant="ghost"
+              variant={social.label === "Telegram" ? "primary" : "ghost"}
               className="gap-2"
             >
               <span className="text-base">{social.icon}</span>

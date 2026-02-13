@@ -21,6 +21,7 @@ export type SiteConfig = {
   services: ServiceItem[];
   highlights: string[];
   trustMetrics: { label: string; value: string }[];
+  processSteps: { title: string; detail: string }[];
   contactLine: string;
   madeWithLine: string;
   seo: {
@@ -114,6 +115,28 @@ export const siteConfig: SiteConfig = {
     { label: "Teslim Stili", value: "Hızlı" },
     { label: "İletişim", value: "Net" },
     { label: "Odak", value: "Sonuç" },
+  ],
+  processSteps: [
+    {
+      title: "Brief Netleşir",
+      detail:
+        "Hedef, öncelik ve beklentiyi hızlıca netliyoruz. Kimin ne istediği ilk dakikada belli oluyor.",
+    },
+    {
+      title: "Plan Çıkar",
+      detail:
+        "Script, kripto-finans akışı ve reklam tarafı için uygulanabilir bir yol haritası kuruluyor.",
+    },
+    {
+      title: "Kurulum + İnce Ayar",
+      detail:
+        "Sistem devreye alınır, işleyişe göre optimize edilir. Dağınık görüntü toparlanır, süreç akıcı hale gelir.",
+    },
+    {
+      title: "Kontrol + Teslim",
+      detail:
+        "Son kontrol sonrası kullanım hazır teslim yapılır. Müşteri tarafında günlük yönetim yükü düşer.",
+    },
   ],
   contactLine:
     "Müşteri gibi bakıyorsan doğru yerdesin. Yaz, kısa bir plan çıkaralım ve işi hızlıca devreye alalım.",

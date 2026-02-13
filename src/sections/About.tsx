@@ -13,6 +13,10 @@ export default function About() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <SectionTitle title="Ben kimim?" eyebrow="kimlik" />
+        <p className="mb-6 max-w-3xl text-zinc-300">
+          Burada amaç havalı görünmek değil, müşterinin gerçekten işine yarayan düzeni kurmak. Çizgi net, sonuç odak
+          net.
+        </p>
 
         <div className="grid gap-5 lg:grid-cols-[1.3fr_.9fr]">
           <Card>

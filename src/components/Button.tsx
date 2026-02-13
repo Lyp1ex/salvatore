@@ -25,9 +25,9 @@ const baseClass =
 
 const variantClass: Record<Variant, string> = {
   primary:
-    "border border-cyan-300/50 bg-gradient-to-r from-cyan-300/80 to-emerald-300/80 text-[#021112] shadow-[0_0_28px_rgba(62,255,221,.2)] hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(62,255,221,.35)]",
+    "border border-[rgba(196,164,92,.62)] bg-[linear-gradient(112deg,var(--lux-gold),#d7bc73,var(--lux-gold-soft))] text-[#14110a] shadow-[0_0_28px_rgba(196,164,92,.3)] hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(196,164,92,.42)]",
   ghost:
-    "border border-white/20 bg-white/5 text-zinc-100 backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10",
+    "border border-[rgba(212,176,93,.25)] bg-[rgba(255,255,255,.04)] text-zinc-100 backdrop-blur-sm hover:-translate-y-0.5 hover:border-[rgba(212,176,93,.5)] hover:bg-[rgba(212,176,93,.08)]",
 };
 
 const mergeClass = (variant: Variant, className?: string) =>
@@ -50,4 +50,3 @@ export default function Button(props: ButtonProps) {
     </button>
   );
 }
-

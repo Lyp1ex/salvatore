@@ -4,6 +4,12 @@
 
 :root {
   color-scheme: dark;
+  --lux-bg: #060608;
+  --lux-surface: #101216;
+  --lux-gold: #c4a45c;
+  --lux-gold-soft: #d7bf84;
+  --lux-mint: #78d5c7;
+  --lux-cream: #f1e4c5;
 }
 
 * {
@@ -17,7 +23,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: #07080b;
+  background: radial-gradient(circle at 18% 12%, #13161b 0%, #060608 46%, #050506 100%);
   color: #f7f8fb;
   font-family: "Sora", "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
@@ -31,12 +37,13 @@ body {
 .signature-name {
   font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 24px rgba(213, 223, 230, 0.2), 0 0 42px rgba(132, 237, 220, 0.16);
+  text-shadow: 0 0 24px rgba(212, 176, 93, 0.2), 0 0 42px rgba(120, 213, 199, 0.14);
 }
 
 .hero-shell {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero-shell::after {
@@ -49,11 +56,31 @@ body {
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0),
-    rgba(154, 232, 226, 0.18),
+    rgba(212, 176, 93, 0.2),
     rgba(255, 255, 255, 0)
   );
   animation: hero-sweep 7s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
+}
+
+.hero-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.lux-title {
+  color: var(--lux-cream);
+  text-shadow: 0 0 20px rgba(212, 176, 93, 0.22);
+}
+
+.grid-layer {
+  opacity: 0.22;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at center, black 36%, transparent 85%);
 }
 
 .noise-layer {
@@ -75,22 +102,36 @@ body {
 .blob-one {
   top: -12rem;
   left: -10rem;
-  background: #9aa8b1;
+  background: #b9974f;
   animation: blob-drift-one 22s ease-in-out infinite;
 }
 
 .blob-two {
   right: -10rem;
   top: 25%;
-  background: #6e8d9a;
+  background: #699ca8;
   animation: blob-drift-two 24s ease-in-out infinite;
 }
 
 .blob-three {
   bottom: -14rem;
   left: 28%;
-  background: #79d7c4;
+  background: #7ed2b0;
   animation: blob-drift-three 26s ease-in-out infinite;
+}
+
+.section-divider {
+  margin: 0 auto;
+  width: min(720px, 82%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(212, 176, 93, 0.42),
+    rgba(120, 213, 199, 0.32),
+    rgba(255, 255, 255, 0)
+  );
+  box-shadow: 0 0 20px rgba(212, 176, 93, 0.18);
 }
 
 .scanline-layer {
@@ -182,7 +223,8 @@ body {
 
   .blob,
   .scanline-layer,
-  .hero-shell::after {
+  .hero-shell::after,
+  .grid-layer {
     animation: none !important;
   }
 }
