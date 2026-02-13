@@ -1,10 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import AmbientLight from "./components/AmbientLight";
 import BackgroundFX from "./components/BackgroundFX";
+import CommandPalette from "./components/CommandPalette";
 import LuxuryCursor from "./components/LuxuryCursor";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
-import { siteConfig } from "./config/site";
+import StorylineRail from "./components/StorylineRail";
+import { siteConfigs, type Locale } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
@@ -27,7 +30,7 @@ const upsertMeta = (key: "name" | "property", value: string, content: string) =>
   document.head.appendChild(meta);
 };
 
-function BootOverlay({ visible }: { visible: boolean }) {
+function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
   return (
     <AnimatePresence>
       {visible ? (
@@ -44,12 +47,8 @@ function BootOverlay({ visible }: { visible: boolean }) {
             transition={{ duration: 0.35 }}
             className="absolute inset-0 m-auto flex h-fit w-fit flex-col items-center gap-2 text-center"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.32em] text-zinc-400">
-              kimlik senkronlanıyor
-            </p>
-            <h2 className="signature-name text-4xl font-extrabold italic text-zinc-100 sm:text-5xl">
-              {siteConfig.displayName}
-            </h2>
+            <p className="font-mono text-xs uppercase tracking-[0.32em] text-zinc-400">kimlik senkronlanıyor</p>
+            <h2 className="signature-name text-4xl font-extrabold italic text-zinc-100 sm:text-5xl">{title}</h2>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--lux-gold-soft)]">
               sinyal kilitlendi • 2017+
             </p>
@@ -62,41 +61,87 @@ function BootOverlay({ visible }: { visible: boolean }) {
 
 export default function App() {
   const [isBooting, setIsBooting] = useState(true);
+  const [locale, setLocale] = useState<Locale>("tr");
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   useEffect(() => {
-    document.title = siteConfig.seo.title;
-    upsertMeta("name", "description", siteConfig.seo.description);
-    upsertMeta("property", "og:title", siteConfig.seo.title);
-    upsertMeta("property", "og:description", siteConfig.seo.ogDescription);
-    upsertMeta("name", "twitter:title", siteConfig.seo.title);
-    upsertMeta("name", "twitter:description", siteConfig.seo.twitterDescription);
+    const saved = window.localStorage.getItem("site-locale");
+    if (saved === "tr" || saved === "en") {
+      setLocale(saved);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("site-locale", locale);
+  }, [locale]);
+
+  const site = useMemo(() => siteConfigs[locale], [locale]);
+
+  useEffect(() => {
+    document.title = site.seo.title;
+    upsertMeta("name", "description", site.seo.description);
+    upsertMeta("property", "og:title", site.seo.title);
+    upsertMeta("property", "og:description", site.seo.ogDescription);
+    upsertMeta("name", "twitter:title", site.seo.title);
+    upsertMeta("name", "twitter:description", site.seo.twitterDescription);
 
     const timer = window.setTimeout(() => setIsBooting(false), 1400);
     return () => window.clearTimeout(timer);
+  }, [site]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const isShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k";
+      if (!isShortcut) return;
+      event.preventDefault();
+      setIsCommandOpen((previous) => !previous);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  const onToggleLocale = () => {
+    setLocale((previous) => (previous === "tr" ? "en" : "tr"));
+  };
+
+  const onNavigate = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="relative min-h-screen text-zinc-100">
       <BackgroundFX />
+      <AmbientLight />
       <LuxuryCursor />
       <ScrollProgress />
-      <Navbar />
+      <StorylineRail />
+      <Navbar site={site} locale={locale} onToggleLocale={onToggleLocale} onOpenCommand={() => setIsCommandOpen(true)} />
 
       <main className="relative z-10 mx-auto max-w-6xl px-4 pb-10 pt-20 sm:px-6 md:pt-24">
-        <Hero />
+        <Hero site={site} />
         <div className="section-divider" />
-        <About />
+        <About site={site} />
         <div className="section-divider" />
-        <Work />
+        <Work site={site} />
         <div className="section-divider" />
-        <Process />
+        <Process site={site} />
         <div className="section-divider" />
-        <Proof />
+        <Proof site={site} />
         <div className="section-divider" />
-        <Contact />
+        <Contact site={site} />
       </main>
 
-      <BootOverlay visible={isBooting} />
+      <CommandPalette
+        open={isCommandOpen}
+        site={site}
+        locale={locale}
+        onClose={() => setIsCommandOpen(false)}
+        onNavigate={onNavigate}
+        onToggleLocale={onToggleLocale}
+      />
+
+      <BootOverlay visible={isBooting} title={site.displayName} />
     </div>
   );
 }

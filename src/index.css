@@ -67,6 +67,36 @@ body {
   pointer-events: none;
 }
 
+.floating-badge {
+  position: absolute;
+  border: 1px solid rgba(212, 176, 93, 0.28);
+  background: rgba(8, 10, 14, 0.62);
+  color: var(--lux-cream);
+  border-radius: 9999px;
+  padding: 0.25rem 0.7rem;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 18px rgba(212, 176, 93, 0.16);
+  pointer-events: none;
+}
+
+.floating-badge-1 {
+  right: 2rem;
+  top: 8.2rem;
+}
+
+.floating-badge-2 {
+  right: 8.5rem;
+  top: 13rem;
+}
+
+.floating-badge-3 {
+  right: 2.6rem;
+  top: 18rem;
+}
+
 .hero-shell::after {
   content: "";
   position: absolute;
@@ -153,6 +183,61 @@ body {
     rgba(255, 255, 255, 0)
   );
   box-shadow: 0 0 20px rgba(212, 176, 93, 0.18);
+}
+
+.storyline-rail {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+.storyline-fill {
+  background: linear-gradient(180deg, var(--lux-gold), var(--lux-mint));
+  box-shadow: 0 0 14px rgba(212, 176, 93, 0.42);
+}
+
+.storyline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(241, 228, 197, 0.9);
+  background: var(--lux-gold);
+  box-shadow: 0 0 18px rgba(212, 176, 93, 0.5);
+}
+
+.glass-distort {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-distort::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.16), transparent 48%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glass-distort:hover::before {
+  opacity: 1;
+}
+
+.cta-orbit {
+  position: relative;
+  display: inline-flex;
+}
+
+.cta-orbit-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 176, 93, 0.46);
+  animation: orbit-pulse 2.8s ease-out infinite;
+  pointer-events: none;
+}
+
+.cta-orbit-ring-delay {
+  animation-delay: 1.2s;
 }
 
 .lux-cursor-ring {
@@ -256,6 +341,17 @@ body {
   }
 }
 
+@keyframes orbit-pulse {
+  0% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
 @media (max-width: 640px) {
   .blob {
     width: 24rem;
@@ -265,6 +361,10 @@ body {
 
   .hero-monogram {
     right: 0.8rem;
+  }
+
+  .floating-badge {
+    display: none;
   }
 }
 
@@ -276,7 +376,8 @@ body {
   .blob,
   .scanline-layer,
   .hero-shell::after,
-  .grid-layer {
+  .grid-layer,
+  .cta-orbit-ring {
     animation: none !important;
   }
 }

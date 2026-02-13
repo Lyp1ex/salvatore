@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import Card from "../components/Card";
 import SectionTitle from "../components/SectionTitle";
-import { siteConfig } from "../config/site";
+import type { SiteConfig } from "../config/site";
 
-export default function About() {
+type AboutProps = {
+  site: SiteConfig;
+};
+
+export default function About({ site }: AboutProps) {
   return (
     <section id="about" className="scroll-mt-24 py-20">
       <motion.div
@@ -12,34 +16,45 @@ export default function About() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <SectionTitle title="Ben kimim?" eyebrow="kimlik" />
-        <p className="mb-6 max-w-3xl text-zinc-300">
-          Burada amaç havalı görünmek değil, müşterinin gerçekten işine yarayan düzeni kurmak. Çizgi net, sonuç odak
-          net.
-        </p>
+        <SectionTitle title={site.aboutTitle} eyebrow={site.aboutEyebrow} />
+        <p className="mb-6 max-w-3xl text-zinc-300">{site.aboutIntro}</p>
 
         <div className="grid gap-5 lg:grid-cols-[1.3fr_.9fr]">
-          <Card>
-            <div className="space-y-4 text-zinc-200">
-              {siteConfig.aboutParagraphs.map((paragraph) => (
-                <p key={paragraph} className="leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 14, clipPath: "inset(0 0 30% 0 round 18px)" }}
+            whileInView={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0 round 18px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45 }}
+          >
+            <Card>
+              <div className="space-y-4 text-zinc-200">
+                {site.aboutParagraphs.map((paragraph) => (
+                  <p key={paragraph} className="leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
 
-          <Card>
-            <h3 className="text-xl font-bold text-zinc-100">Müşteri İçin Net Tablo</h3>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-300">
-              {siteConfig.quickFacts.map((fact) => (
-                <li key={fact} className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                  <span>{fact}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 14, clipPath: "inset(0 0 30% 0 round 18px)" }}
+            whileInView={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0 round 18px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+          >
+            <Card>
+              <h3 className="text-xl font-bold text-zinc-100">{site.factsTitle}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+                {site.quickFacts.map((fact) => (
+                  <li key={fact} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                    <span>{fact}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
         </div>
       </motion.div>
     </section>
