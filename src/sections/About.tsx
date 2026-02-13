@@ -9,7 +9,7 @@ type AboutProps = {
 
 export default function About({ site }: AboutProps) {
   return (
-    <section id="about" className="scroll-mt-24 py-20">
+    <section id="about" className="scroll-mt-24 py-14 sm:py-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

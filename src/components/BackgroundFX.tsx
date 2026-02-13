@@ -23,10 +23,16 @@ const createParticles = (count: number, width: number, height: number): Particle
     alpha: random(0.16, 0.48),
   }));
 
-export default function BackgroundFX() {
+type BackgroundFXProps = {
+  lite?: boolean;
+};
+
+export default function BackgroundFX({ lite = false }: BackgroundFXProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (lite) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -88,7 +94,7 @@ export default function BackgroundFX() {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [lite]);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-base">
@@ -99,7 +105,7 @@ export default function BackgroundFX() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,_rgba(123,215,200,0.1)_0%,_transparent_40%)]" />
       <div className="grid-layer absolute inset-0" />
       <div className="noise-layer absolute inset-0" />
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-55" />
+      {lite ? null : <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-55" />}
     </div>
   );
 }

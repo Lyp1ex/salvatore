@@ -10,13 +10,13 @@ type ContactProps = {
 
 export default function Contact({ site }: ContactProps) {
   return (
-    <footer id="contact" className="scroll-mt-24 pb-16 pt-20">
+    <footer id="contact" className="scroll-mt-24 pb-16 pt-14 sm:pt-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative overflow-hidden rounded-3xl border border-[rgba(196,164,92,.34)] bg-[linear-gradient(130deg,rgba(255,255,255,.08),rgba(8,9,13,.92))] p-6 shadow-[0_26px_90px_rgba(0,0,0,.6)] backdrop-blur-xl sm:p-10"
+        className="relative overflow-hidden rounded-3xl border border-[rgba(196,164,92,.34)] bg-[linear-gradient(130deg,rgba(255,255,255,.08),rgba(8,9,13,.92))] p-4 shadow-[0_26px_90px_rgba(0,0,0,.6)] backdrop-blur-xl sm:p-10"
       >
         <div className="contact-pulse contact-pulse-one" aria-hidden />
         <div className="contact-pulse contact-pulse-two" aria-hidden />
@@ -42,7 +42,7 @@ export default function Contact({ site }: ContactProps) {
                     target="_blank"
                     rel="noreferrer"
                     variant="primary"
-                    className="gap-2 px-6 py-3 text-base"
+                    className="w-full gap-2 px-6 py-3 text-base sm:w-auto"
                   >
                     <FaTelegramPlane />
                     {site.mobileCtaLabel}
@@ -54,7 +54,7 @@ export default function Contact({ site }: ContactProps) {
                   target="_blank"
                   rel="noreferrer"
                   variant="ghost"
-                  className="gap-2"
+                  className="w-full gap-2 sm:w-auto"
                 >
                   <FaInstagram />
                   {site.socials.instagram.label}

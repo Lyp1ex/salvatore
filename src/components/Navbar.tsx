@@ -2,14 +2,25 @@ import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import type { Locale, SiteConfig } from "../config/site";
 
+type MotionMode = "ultra" | "lite";
+
 type NavbarProps = {
   site: SiteConfig;
   locale: Locale;
+  motionMode: MotionMode;
   onToggleLocale: () => void;
+  onToggleMotion: () => void;
   onOpenCommand: () => void;
 };
 
-export default function Navbar({ site, locale, onToggleLocale, onOpenCommand }: NavbarProps) {
+export default function Navbar({
+  site,
+  locale,
+  motionMode,
+  onToggleLocale,
+  onToggleMotion,
+  onOpenCommand,
+}: NavbarProps) {
   const navItems = useMemo(
     () => [
       { id: "home", href: "#home", label: site.nav.home },
@@ -28,7 +39,7 @@ export default function Navbar({ site, locale, onToggleLocale, onOpenCommand }: 
     const sectionIds = navItems.map((item) => item.id);
 
     const updateActiveSection = () => {
-      const marker = window.scrollY + 160;
+      const marker = window.scrollY + 170;
       let current = sectionIds[0] ?? "home";
 
       sectionIds.forEach((id) => {
@@ -56,38 +67,51 @@ export default function Navbar({ site, locale, onToggleLocale, onOpenCommand }: 
     };
   }, [navItems]);
 
+  const motionLabel = motionMode === "ultra" ? site.motionToggle.ultra : site.motionToggle.lite;
+
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <nav className="pointer-events-auto ml-auto flex w-fit items-center gap-1 rounded-full border border-[rgba(196,164,92,.26)] bg-[rgba(7,8,11,.62)] p-1.5 shadow-[0_10px_30px_rgba(0,0,0,.45)] backdrop-blur-xl">
-        {navItems.map((item) => {
-          const isActive = activeSection === item.id;
-          return (
-            <a
-              key={item.href}
-              href={item.href}
-              data-cursor="active"
-              className={`nav-pill relative rounded-full px-3 py-1.5 text-xs font-medium transition duration-300 sm:text-sm ${
-                isActive
-                  ? "text-[var(--lux-cream)]"
-                  : "text-zinc-200 hover:bg-[rgba(196,164,92,.14)] hover:text-[var(--lux-cream)]"
-              }`}
-            >
-              {isActive ? <motion.span layoutId="nav-active-pill" className="nav-pill-active" /> : null}
-              <span className="relative z-10">{item.label}</span>
-            </a>
-          );
-        })}
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 px-3 sm:px-6">
+      <nav className="pointer-events-auto mx-auto flex max-w-6xl items-center gap-1 rounded-2xl border border-[rgba(196,164,92,.26)] bg-[rgba(7,8,11,.62)] p-1.5 shadow-[0_10px_30px_rgba(0,0,0,.45)] backdrop-blur-xl">
+        <div className="hide-scrollbar flex min-w-0 flex-1 items-center gap-1 overflow-x-auto pr-1">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                data-cursor="active"
+                className={`nav-pill relative shrink-0 rounded-full px-2.5 py-1.5 text-[11px] font-medium transition duration-300 sm:px-3 sm:text-sm ${
+                  isActive
+                    ? "text-[var(--lux-cream)]"
+                    : "text-zinc-200 hover:bg-[rgba(196,164,92,.14)] hover:text-[var(--lux-cream)]"
+                }`}
+              >
+                {isActive ? <motion.span layoutId="nav-active-pill" className="nav-pill-active" /> : null}
+                <span className="relative z-10">{item.label}</span>
+              </a>
+            );
+          })}
+        </div>
+
         <button
           data-cursor="active"
           onClick={onOpenCommand}
-          className="rounded-full border border-[rgba(212,176,93,.28)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)]"
+          className="shrink-0 rounded-full border border-[rgba(212,176,93,.28)] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)] sm:px-3 sm:text-[11px]"
         >
           {site.commandShortcutLabel}
         </button>
         <button
           data-cursor="active"
+          onClick={onToggleMotion}
+          className="shrink-0 rounded-full border border-[rgba(212,176,93,.28)] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)] sm:px-3 sm:text-[11px]"
+          aria-label={motionLabel}
+        >
+          {motionLabel}
+        </button>
+        <button
+          data-cursor="active"
           onClick={onToggleLocale}
-          className="rounded-full border border-[rgba(212,176,93,.28)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)]"
+          className="shrink-0 rounded-full border border-[rgba(212,176,93,.28)] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)] sm:px-3 sm:text-[11px]"
           aria-label={site.localeLabel}
         >
           {locale.toUpperCase()}

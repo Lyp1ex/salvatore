@@ -21,13 +21,13 @@ export default function Hero({ site }: HeroProps) {
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -68]);
 
   return (
-    <section ref={sectionRef} id="home" className="scroll-mt-24 pt-16 sm:pt-20">
+    <section ref={sectionRef} id="home" className="scroll-mt-24 pt-14 sm:pt-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.45 }}
         transition={{ duration: 0.55, ease: "easeOut" }}
-        className="hero-shell rounded-3xl border border-[rgba(196,164,92,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.08),rgba(10,11,14,.8))] px-5 py-10 shadow-neon backdrop-blur-xl sm:px-8 sm:py-14"
+        className="hero-shell rounded-3xl border border-[rgba(196,164,92,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.08),rgba(10,11,14,.8))] px-4 py-9 shadow-neon backdrop-blur-xl sm:px-8 sm:py-14"
       >
         <span className="inline-flex rounded-full border border-[rgba(212,176,93,.45)] bg-[rgba(212,176,93,.14)] px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--lux-cream)]">
           {site.statusChip}
@@ -36,14 +36,14 @@ export default function Hero({ site }: HeroProps) {
         <div className="relative mt-5">
           <motion.h1
             style={{ y: foregroundY }}
-            className="signature-name relative z-10 text-6xl font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl"
+            className="signature-name relative z-10 text-[3.2rem] font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl"
           >
             {site.displayName}
           </motion.h1>
           <motion.h1
             aria-hidden
             style={{ y: backgroundY }}
-            className="pointer-events-none absolute inset-0 z-0 text-6xl font-extrabold italic leading-[0.9] text-[rgba(212,176,93,.16)] blur-[1px] sm:text-8xl"
+            className="pointer-events-none absolute inset-0 z-0 hidden text-6xl font-extrabold italic leading-[0.9] text-[rgba(212,176,93,.16)] blur-[1px] sm:block sm:text-8xl"
           >
             {site.displayName}
           </motion.h1>
@@ -51,13 +51,15 @@ export default function Hero({ site }: HeroProps) {
 
         <p className="lux-title mt-3 text-xl font-semibold sm:text-2xl">{site.slogan}</p>
         <p className="mt-6 max-w-2xl text-lg text-zinc-200 sm:text-xl">{site.tagline}</p>
-        <p className="mt-3 max-w-2xl font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">{site.microLine}</p>
+        <p className="mt-3 max-w-2xl font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-400 sm:text-xs sm:tracking-[0.2em]">
+          {site.microLine}
+        </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button href="#contact" variant="primary">
+          <Button href="#contact" variant="primary" className="w-full sm:w-auto">
             {site.buttons.primary}
           </Button>
-          <Button href="#work" variant="ghost">
+          <Button href="#work" variant="ghost" className="w-full sm:w-auto">
             {site.buttons.secondary}
           </Button>
         </div>
@@ -76,7 +78,7 @@ export default function Hero({ site }: HeroProps) {
             {[...site.highlights, ...site.highlights].map((item, index) => (
               <span
                 key={`${item}-${index}`}
-                className="rounded-full border border-cyan-200/25 bg-zinc-900/70 px-3 py-1 text-xs uppercase tracking-wide text-zinc-200"
+                className="rounded-full border border-cyan-200/25 bg-zinc-900/70 px-3 py-1 text-[10px] uppercase tracking-wide text-zinc-200 sm:text-xs"
               >
                 {item}
               </span>
@@ -84,7 +86,7 @@ export default function Hero({ site }: HeroProps) {
           </motion.div>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {site.counterMetrics.map((metric, index) => (
             <motion.div
               key={metric.label}

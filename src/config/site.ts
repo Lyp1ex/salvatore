@@ -53,6 +53,24 @@ export type TrustMetric = {
   summary: string;
 };
 
+export type PackageTier = {
+  name: string;
+  subtitle: string;
+  points: string[];
+  featured?: boolean;
+};
+
+export type BeforeAfterRow = {
+  label: string;
+  before: string;
+  after: string;
+};
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type QuoteWizardConfig = {
   title: string;
   intro: string;
@@ -128,6 +146,17 @@ export type SiteConfig = {
   serviceFilters: ServiceFilterItem[];
   services: ServiceItem[];
   caseStudies: CaseStudy[];
+  packageTitle: string;
+  packageEyebrow: string;
+  packageIntro: string;
+  packageTiers: PackageTier[];
+  beforeAfter: {
+    title: string;
+    eyebrow: string;
+    beforeLabel: string;
+    afterLabel: string;
+    rows: BeforeAfterRow[];
+  };
   processTitle: string;
   processEyebrow: string;
   processSteps: ProcessStep[];
@@ -150,6 +179,19 @@ export type SiteConfig = {
   contactHint: string;
   finalCtaEyebrow: string;
   finalCtaLine: string;
+  faqTitle: string;
+  faqEyebrow: string;
+  faqIntro: string;
+  faqItems: FaqItem[];
+  faqCtaLabel: string;
+  exitCtaTitle: string;
+  exitCtaLine: string;
+  exitCtaPrimary: string;
+  exitCtaSecondary: string;
+  motionToggle: {
+    ultra: string;
+    lite: string;
+  };
   madeWithLine: string;
   commandTitle: string;
   commandHint: string;
@@ -334,6 +376,68 @@ const trConfig: SiteConfig = {
       tags: ["Reklam", "Bütçe", "Takip"],
     },
   ],
+  packageTitle: "Paket Seviyeleri",
+  packageEyebrow: "seviye seçimi",
+  packageIntro:
+    "Fiyat etiketi değil, işin kapsam farkı. Müşteri hedefi büyüdükçe seviyeyi yükseltir, akış gücü katlanır.",
+  packageTiers: [
+    {
+      name: "Core",
+      subtitle: "Temel kurulum + hızlı başlangıç",
+      points: [
+        "Temel yapı kurulumu",
+        "Hazır script paketi entegrasyonu",
+        "Kısa teslim planı",
+      ],
+    },
+    {
+      name: "Pro",
+      subtitle: "Kurulum + süreç düzeni",
+      points: [
+        "Kurulum ve özelleştirme",
+        "Kripto/finans akışı için görünür kontrol",
+        "Rapor düzeni ve süreç netliği",
+      ],
+    },
+    {
+      name: "Signature",
+      subtitle: "Tam premium operasyon sistemi",
+      featured: true,
+      points: [
+        "Script + kripto + finans + reklam ritmi",
+        "Operasyon akışının uçtan uca kurgusu",
+        "Yüksek hızda premium teslim standardı",
+      ],
+    },
+  ],
+  beforeAfter: {
+    title: "Dağınık Akıştan Kontrollü Akışa",
+    eyebrow: "before / after",
+    beforeLabel: "Önce",
+    afterLabel: "Sonra",
+    rows: [
+      {
+        label: "Talep Yönetimi",
+        before: "Mesajlar dağınık, cevap süresi dengesiz",
+        after: "Tek düzen, hızlı ve net dönüş",
+      },
+      {
+        label: "Kripto + Finans",
+        before: "Farklı kanallarda kopuk takip",
+        after: "Panel düzeninde tek bakışta görünürlük",
+      },
+      {
+        label: "Reklam Akışı",
+        before: "Bütçe ve çıktı takibi yorucu",
+        after: "Süreç ritmi net, kontrol sakin",
+      },
+      {
+        label: "Gün Sonu",
+        before: "Raporlama sonradan toparlanır",
+        after: "Karar verdiren kısa ve temiz özet",
+      },
+    ],
+  },
   processTitle: "Nasıl ilerliyorum?",
   processEyebrow: "süreç",
   processSteps: [
@@ -515,6 +619,40 @@ const trConfig: SiteConfig = {
   contactHint: "İlk mesaj formatı: hizmet türü + hedef + süre",
   finalCtaEyebrow: "Final CTA",
   finalCtaLine: "Hedefi net yaz, en doğru akışı hızlıca çıkaralım. Karmaşayı değil sonucu konuşalım.",
+  faqTitle: "Sık Sorulanlar",
+  faqEyebrow: "itiraz kırıcı",
+  faqIntro: "Kararsız kalan müşterinin aklındaki sorulara kısa ve net cevaplar.",
+  faqItems: [
+    {
+      question: "Teslim gerçekten hızlı mı?",
+      answer: "Evet. İş kapsamı netleştiği an plan çıkıyor ve bekletmeden devreye alınıyor.",
+    },
+    {
+      question: "Süreç boyunca iletişim nasıl ilerliyor?",
+      answer: "Kısa, net ve sonuç odaklı. Konu uzamadan karar noktaları hızlı kapanıyor.",
+    },
+    {
+      question: "Sadece script mi, yoksa süreç yönetimi de var mı?",
+      answer: "Scriptin yanında kripto, finans ve reklam akışı için operasyon düzeni de kurulur.",
+    },
+    {
+      question: "Kurulumdan sonra yalnız mı kalıyorum?",
+      answer: "Hayır. Kullanım hattı net bırakılır, kritik geçişler kontrollü tamamlanır.",
+    },
+    {
+      question: "Bu yapı küçük ekiplerde de çalışır mı?",
+      answer: "Evet. Karmaşayı azaltıp görünürlüğü artırdığı için küçük ekipte daha da hızlı sonuç verir.",
+    },
+  ],
+  faqCtaLabel: "Teklif sihirbazına geç",
+  exitCtaTitle: "Hazırsan başlatalım",
+  exitCtaLine: "Çıkmadan önce hedefini yaz, Telegram’dan hızlı planı atalım.",
+  exitCtaPrimary: "Telegram'dan Başlat",
+  exitCtaSecondary: "Bana Teklif Çıkar",
+  motionToggle: {
+    ultra: "ULTRA",
+    lite: "LITE",
+  },
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Hızlı Komutlar",
   commandHint: "Ctrl/Cmd + K",
@@ -682,6 +820,68 @@ const enConfig: SiteConfig = {
       tags: ["Ads", "Budget", "Tracking"],
     },
   ],
+  packageTitle: "Package Levels",
+  packageEyebrow: "tier selection",
+  packageIntro:
+    "Not about pricing labels, about scope power. As the target grows, the tier upgrades and control quality compounds.",
+  packageTiers: [
+    {
+      name: "Core",
+      subtitle: "Base setup + fast launch",
+      points: [
+        "Foundation setup",
+        "Ready script pack integration",
+        "Fast delivery plan",
+      ],
+    },
+    {
+      name: "Pro",
+      subtitle: "Setup + process structure",
+      points: [
+        "Setup and customization",
+        "Visible control for crypto/finance flow",
+        "Reporting rhythm and process clarity",
+      ],
+    },
+    {
+      name: "Signature",
+      subtitle: "Full premium operations system",
+      featured: true,
+      points: [
+        "Script + crypto + finance + ad rhythm",
+        "End-to-end operation architecture",
+        "High-speed premium delivery standard",
+      ],
+    },
+  ],
+  beforeAfter: {
+    title: "From Chaotic Flow to Controlled Flow",
+    eyebrow: "before / after",
+    beforeLabel: "Before",
+    afterLabel: "After",
+    rows: [
+      {
+        label: "Request Management",
+        before: "Scattered messages, inconsistent response times",
+        after: "One clear flow with fast and direct response",
+      },
+      {
+        label: "Crypto + Finance",
+        before: "Fragmented tracking across channels",
+        after: "Single-panel visibility at a glance",
+      },
+      {
+        label: "Ad Operations",
+        before: "Budget and output tracking feels heavy",
+        after: "Stable rhythm and calmer control",
+      },
+      {
+        label: "End of Day",
+        before: "Reports are patched together late",
+        after: "Short clean summary for decisions",
+      },
+    ],
+  },
   processTitle: "How I work",
   processEyebrow: "process",
   processSteps: [
@@ -854,6 +1054,40 @@ const enConfig: SiteConfig = {
   contactHint: "First message format: service type + target + timeline",
   finalCtaEyebrow: "Final CTA",
   finalCtaLine: "Share the target clearly and we will map the fastest execution flow without noise.",
+  faqTitle: "Frequently Asked",
+  faqEyebrow: "objection breaker",
+  faqIntro: "Short and clear answers to the exact questions clients ask before deciding.",
+  faqItems: [
+    {
+      question: "Is delivery actually fast?",
+      answer: "Yes. Once scope is clear, the plan is mapped and execution starts without delay.",
+    },
+    {
+      question: "How does communication run during the process?",
+      answer: "Direct, calm, and outcome-focused. Decision points close quickly.",
+    },
+    {
+      question: "Is this only script support?",
+      answer: "No. Script delivery is paired with crypto, finance, and ad operation structuring.",
+    },
+    {
+      question: "Am I left alone after setup?",
+      answer: "No. The handoff is structured and critical transitions are completed in control.",
+    },
+    {
+      question: "Will this work for smaller teams too?",
+      answer: "Yes. It removes noise and improves visibility, which helps small teams even more.",
+    },
+  ],
+  faqCtaLabel: "Open offer wizard",
+  exitCtaTitle: "Ready to launch?",
+  exitCtaLine: "Before you leave, send your target and get a fast Telegram action plan.",
+  exitCtaPrimary: "Start on Telegram",
+  exitCtaSecondary: "Build My Offer",
+  motionToggle: {
+    ultra: "ULTRA",
+    lite: "LITE",
+  },
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Quick Commands",
   commandHint: "Ctrl/Cmd + K",

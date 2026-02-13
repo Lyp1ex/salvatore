@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import AmbientLight from "./components/AmbientLight";
 import BackgroundFX from "./components/BackgroundFX";
+import ExitCta from "./components/ExitCta";
 import LuxuryCursor from "./components/LuxuryCursor";
 import MobileStickyCTA from "./components/MobileStickyCTA";
 import Navbar from "./components/Navbar";
@@ -10,7 +11,9 @@ import StorylineRail from "./components/StorylineRail";
 import { siteConfigs, type Locale } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
+import Faq from "./sections/Faq";
 import Hero from "./sections/Hero";
+import Packages from "./sections/Packages";
 import Process from "./sections/Process";
 import Proof from "./sections/Proof";
 import Work from "./sections/Work";
@@ -90,10 +93,13 @@ function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
   );
 }
 
+type MotionMode = "ultra" | "lite";
+
 export default function App() {
   const [isBooting, setIsBooting] = useState(true);
   const [locale, setLocale] = useState<Locale>("tr");
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [motionMode, setMotionMode] = useState<MotionMode>("ultra");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("site-locale");
@@ -106,6 +112,18 @@ export default function App() {
     window.localStorage.setItem("site-locale", locale);
     document.documentElement.lang = locale;
   }, [locale]);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("site-motion-mode");
+    if (saved === "ultra" || saved === "lite") {
+      setMotionMode(saved);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("site-motion-mode", motionMode);
+    document.documentElement.setAttribute("data-motion-mode", motionMode);
+  }, [motionMode]);
 
   const site = useMemo(() => siteConfigs[locale], [locale]);
 
@@ -175,54 +193,67 @@ export default function App() {
     setLocale((previous) => (previous === "tr" ? "en" : "tr"));
   };
 
+  const onToggleMotion = () => {
+    setMotionMode((previous) => (previous === "ultra" ? "lite" : "ultra"));
+  };
+
   const onNavigate = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="relative min-h-screen text-zinc-100">
-      <BackgroundFX />
-      <AmbientLight />
-      <LuxuryCursor />
-      <ScrollProgress />
-      <StorylineRail />
-      <Navbar
-        site={site}
-        locale={locale}
-        onToggleLocale={onToggleLocale}
-        onOpenCommand={() => setIsCommandOpen(true)}
-      />
+    <MotionConfig reducedMotion={motionMode === "lite" ? "always" : "user"}>
+      <div className={`relative min-h-screen text-zinc-100 ${motionMode === "lite" ? "motion-lite" : ""}`}>
+        <BackgroundFX lite={motionMode === "lite"} />
+        {motionMode === "ultra" ? <AmbientLight /> : null}
+        {motionMode === "ultra" ? <LuxuryCursor /> : null}
+        <ScrollProgress />
+        {motionMode === "ultra" ? <StorylineRail /> : null}
+        <Navbar
+          site={site}
+          locale={locale}
+          motionMode={motionMode}
+          onToggleLocale={onToggleLocale}
+          onToggleMotion={onToggleMotion}
+          onOpenCommand={() => setIsCommandOpen(true)}
+        />
 
-      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6 md:pb-10 md:pt-24">
-        <Hero site={site} />
-        <div className="section-divider" />
-        <About site={site} />
-        <div className="section-divider" />
-        <Work site={site} />
-        <div className="section-divider" />
-        <Process site={site} />
-        <div className="section-divider" />
-        <Proof site={site} />
-        <div className="section-divider" />
-        <Contact site={site} />
-      </main>
+        <main className="relative z-10 mx-auto max-w-6xl px-3 pb-32 pt-24 sm:px-5 md:pb-12 md:pt-28">
+          <Hero site={site} />
+          <div className="section-divider" />
+          <About site={site} />
+          <div className="section-divider" />
+          <Work site={site} />
+          <div className="section-divider" />
+          <Packages site={site} />
+          <div className="section-divider" />
+          <Process site={site} />
+          <div className="section-divider" />
+          <Proof site={site} />
+          <div className="section-divider" />
+          <Faq site={site} />
+          <div className="section-divider" />
+          <Contact site={site} />
+        </main>
 
-      <MobileStickyCTA site={site} />
+        <MobileStickyCTA site={site} />
+        <ExitCta site={site} />
 
-      {isCommandOpen ? (
-        <Suspense fallback={null}>
-          <CommandPalette
-            open={isCommandOpen}
-            site={site}
-            locale={locale}
-            onClose={() => setIsCommandOpen(false)}
-            onNavigate={onNavigate}
-            onToggleLocale={onToggleLocale}
-          />
-        </Suspense>
-      ) : null}
+        {isCommandOpen ? (
+          <Suspense fallback={null}>
+            <CommandPalette
+              open={isCommandOpen}
+              site={site}
+              locale={locale}
+              onClose={() => setIsCommandOpen(false)}
+              onNavigate={onNavigate}
+              onToggleLocale={onToggleLocale}
+            />
+          </Suspense>
+        ) : null}
 
-      <BootOverlay visible={isBooting} title={site.displayName} />
-    </div>
+        <BootOverlay visible={isBooting} title={site.displayName} />
+      </div>
+    </MotionConfig>
   );
 }

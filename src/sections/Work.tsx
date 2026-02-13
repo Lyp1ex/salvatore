@@ -44,7 +44,7 @@ export default function Work({ site }: WorkProps) {
   };
 
   return (
-    <section id="work" className="scroll-mt-24 py-20">
+    <section id="work" className="scroll-mt-24 py-14 sm:py-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function Work({ site }: WorkProps) {
         <SectionTitle title={site.workTitle} eyebrow={site.workEyebrow} />
         <p className="mb-6 max-w-3xl text-zinc-300">{site.workIntro}</p>
 
-        <div className="mb-5 flex flex-wrap gap-2">
+        <div className="hide-scrollbar mb-5 flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {site.serviceFilters.map((filter) => {
             const active = filter.id === activeFilter;
             return (
@@ -62,7 +62,7 @@ export default function Work({ site }: WorkProps) {
                 key={filter.id}
                 type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ${
+                className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ${
                   active
                     ? "border-[rgba(212,176,93,.64)] bg-[rgba(212,176,93,.14)] text-[var(--lux-cream)]"
                     : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-[rgba(212,176,93,.32)]"

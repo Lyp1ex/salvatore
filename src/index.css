@@ -34,6 +34,35 @@ body {
   min-height: 100vh;
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.motion-lite .blob,
+.motion-lite .scanline-layer,
+.motion-lite .hero-shell::before,
+.motion-lite .hero-shell::after,
+.motion-lite .grid-layer,
+.motion-lite .noise-layer,
+.motion-lite .cta-orbit-ring,
+.motion-lite .proof-track,
+.motion-lite .contact-pulse,
+.motion-lite .signature-reel-line,
+.motion-lite .trust-bar-fill::after,
+.motion-lite .wizard-progress-fill::after,
+.motion-lite .case-scene-glow {
+  animation: none !important;
+}
+
+.motion-lite .lux-sweep-card::after,
+.motion-lite .lux-sweep-btn::after {
+  display: none;
+}
+
 @media (pointer: fine) {
   body {
     cursor: none;
@@ -548,6 +577,14 @@ body {
 
   .mobile-cta-glow {
     margin-bottom: env(safe-area-inset-bottom);
+  }
+
+  .section-divider {
+    width: min(100%, 92%);
+  }
+
+  .nav-pill-active {
+    box-shadow: 0 0 14px rgba(212, 176, 93, 0.22);
   }
 }
 
