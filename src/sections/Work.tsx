@@ -84,7 +84,7 @@ export default function Work({ site }: WorkProps) {
                 exit={{ opacity: 0, y: 14, scale: 0.98 }}
                 transition={{ duration: 0.32, delay: index * 0.03 }}
               >
-                <Card className="group h-full transition duration-300 hover:-translate-y-1 hover:border-cyan-200/30 hover:shadow-[0_20px_50px_rgba(63,222,201,.14)]">
+                <Card className="h-full border-[rgba(212,176,93,.22)] transition duration-200 hover:border-[rgba(212,176,93,.38)] hover:shadow-[0_12px_30px_rgba(0,0,0,.35)]">
                   <h3 className="text-lg font-bold text-zinc-100">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-300">{service.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">

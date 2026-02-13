@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 type Variant = "primary" | "ghost";
 
@@ -36,32 +35,11 @@ const mergeClass = (variant: Variant, className?: string) =>
 
 export default function Button(props: ButtonProps) {
   const { children, variant = "primary", className, ...rest } = props;
-  const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
-
-  const onMouseMove = (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!window.matchMedia("(pointer:fine)").matches) return;
-    const element = ref.current;
-    if (!element) return;
-
-    const rect = element.getBoundingClientRect();
-    const x = event.clientX - (rect.left + rect.width / 2);
-    const y = event.clientY - (rect.top + rect.height / 2);
-    element.style.transform = `translate(${x * 0.14}px, ${y * 0.14}px)`;
-  };
-
-  const onMouseLeave = () => {
-    const element = ref.current;
-    if (!element) return;
-    element.style.transform = "";
-  };
 
   if ("href" in props) {
     return (
       <a
-        ref={ref as any}
         data-cursor="active"
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
         className={mergeClass(variant, className)}
         {...(rest as LinkProps)}
       >
@@ -72,10 +50,7 @@ export default function Button(props: ButtonProps) {
 
   return (
     <button
-      ref={ref as any}
       data-cursor="active"
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
       className={mergeClass(variant, className)}
       {...(rest as NativeButtonProps)}
     >

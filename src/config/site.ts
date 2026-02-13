@@ -188,11 +188,6 @@ export type SiteConfig = {
   exitCtaLine: string;
   exitCtaPrimary: string;
   exitCtaSecondary: string;
-  motionToggle: {
-    ultra: string;
-    lite: string;
-  };
-  madeWithLine: string;
   commandTitle: string;
   commandHint: string;
   commandPlaceholder: string;
@@ -281,8 +276,8 @@ const trConfig: SiteConfig = {
     "Hızlı teslim",
     "İletişim net",
   ],
-  workTitle: "Ne yapıyorum?",
-  workEyebrow: "servisler",
+  workTitle: "Hizmet Alanları",
+  workEyebrow: "operasyon kapsamı",
   workIntro:
     "Buradaki bütün hizmetler tek hedefe oynar: müşterinin işini hızlandırmak, dağınıklığı toplamak, süreci görünür ve yönetilebilir hale getirmek.",
   serviceFilters: [
@@ -296,49 +291,49 @@ const trConfig: SiteConfig = {
     {
       title: "Website Altyapıları",
       description:
-        "Performans ve ölçek odaklı temel mimariyi kuruyorum. Proje dağılmadan, sağlam zeminde büyüyor.",
+        "İş yüküne dayanıklı ve sürdürülebilir web altyapıları kurulup optimize edilir.",
       tags: ["Mimari", "Performans", "Ölçek"],
       filters: ["all", "script"],
     },
     {
       title: "Hazır Script Paketleri",
       description:
-        "Hazır ve modüler script paketleriyle süreci hızlandırıyorum. Gereksiz tekrar yerine direkt sonuç.",
+        "Modüler script paketleriyle devreye alma süreci hızlandırılır ve standart hale getirilir.",
       tags: ["Hazır Paket", "Modüler", "Hızlı Başlangıç"],
       filters: ["all", "script"],
     },
     {
       title: "Kurulum & Özelleştirme",
       description:
-        "Kurulumu bitirip bırakmıyorum; iş akışına göre ince ayar yapıp sistemi stabil hale getiriyorum.",
+        "Kurulum sonrası ihtiyaçlara göre özelleştirme, test ve stabilizasyon uygulanır.",
       tags: ["Kurulum", "Özelleştirme", "Stabilite"],
       filters: ["all", "script"],
     },
     {
       title: "Kripto Süreç Kurgusu",
       description:
-        "İşlem yoğunluğunu sade bir düzende topluyorum. Müşteri için kafa karışıklığı değil, kontrol hissi üretiyor.",
+        "Kripto işlem akışı tek düzene alınır; izleme, kontrol ve karar görünürlüğü güçlendirilir.",
       tags: ["Kripto", "Takip", "Düzen"],
       filters: ["all", "crypto"],
     },
     {
       title: "Finans Akış Düzeni",
       description:
-        "Finans ve banka hareketlerinde akışı netleştiriyorum. Tablolar düzenli, günlük kontrol daha hızlı oluyor.",
+        "Finans ve banka hareketleri düzenli tablo ve rapor standardına taşınır.",
       tags: ["Finans", "Banka", "Rapor"],
       filters: ["all", "finance"],
     },
     {
       title: "Bakiye ve Hareket Takibi",
       description:
-        "Bakiye ve hareket görünürlüğünü tek çatıya topluyorum. Nerede ne var sorusu tek bakışta cevaplanıyor.",
+        "Bakiye ve hareket verisi tek görünümde toplanarak günlük kontrol kolaylaştırılır.",
       tags: ["Bakiye", "Takip", "Görünürlük"],
       filters: ["all", "finance", "crypto"],
     },
     {
       title: "Reklam Süreç Yönetimi",
       description:
-        "Reklam çıkışlarını, bütçe akışını ve sonuç özetini düzenli bir yapıda yönetilebilir hale getiriyorum.",
+        "Reklam bütçesi, süreç takibi ve performans çıktıları tek ritimde yönetilir.",
       tags: ["Reklam", "Bütçe", "Özet"],
       filters: ["all", "ads"],
     },
@@ -649,11 +644,6 @@ const trConfig: SiteConfig = {
   exitCtaLine: "Çıkmadan önce hedefini yaz, Telegram’dan hızlı planı atalım.",
   exitCtaPrimary: "Telegram'dan Başlat",
   exitCtaSecondary: "Bana Teklif Çıkar",
-  motionToggle: {
-    ultra: "ULTRA",
-    lite: "LITE",
-  },
-  madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Hızlı Komutlar",
   commandHint: "Ctrl/Cmd + K",
   commandPlaceholder: "Bölüm ara veya komut yaz...",
@@ -735,8 +725,8 @@ const enConfig: SiteConfig = {
     "Fast delivery",
     "Clear communication",
   ],
-  workTitle: "What I do",
-  workEyebrow: "services",
+  workTitle: "Service Scope",
+  workEyebrow: "operations",
   workIntro:
     "Every service below targets one thing: speed up client execution, remove chaos, and make operations manageable.",
   serviceFilters: [
@@ -749,43 +739,43 @@ const enConfig: SiteConfig = {
   services: [
     {
       title: "Website Infrastructure",
-      description: "I build performance-focused architecture so projects scale on stable foundations.",
+      description: "I build and optimize resilient web infrastructure for stable, scalable execution.",
       tags: ["Architecture", "Performance", "Scale"],
       filters: ["all", "script"],
     },
     {
       title: "Ready Script Packs",
-      description: "Modular script packs to speed up launch and remove repetitive overhead.",
+      description: "Modular script packages that accelerate launch and standardize delivery.",
       tags: ["Ready Pack", "Modular", "Fast Start"],
       filters: ["all", "script"],
     },
     {
       title: "Setup & Customization",
-      description: "Not just setup. I tune the system to fit your operation and make it stable.",
+      description: "Setup, operational customization, and stabilization aligned to your workflow.",
       tags: ["Setup", "Customization", "Stability"],
       filters: ["all", "script"],
     },
     {
       title: "Crypto Process Design",
-      description: "I simplify complex transaction flow into a controlled and readable system.",
+      description: "Crypto transaction flow is structured into a single, controlled, readable process.",
       tags: ["Crypto", "Tracking", "Structure"],
       filters: ["all", "crypto"],
     },
     {
       title: "Finance Flow Structure",
-      description: "I align finance and banking movements into cleaner reporting and faster daily checks.",
+      description: "Finance and banking movements are aligned into clear reporting and faster control cycles.",
       tags: ["Finance", "Banking", "Reports"],
       filters: ["all", "finance"],
     },
     {
       title: "Balance & Movement Tracking",
-      description: "I centralize balance visibility so teams instantly know what is where.",
+      description: "Balance and movement visibility is centralized for faster daily decisions.",
       tags: ["Balance", "Tracking", "Visibility"],
       filters: ["all", "finance", "crypto"],
     },
     {
       title: "Ad Operations Management",
-      description: "I structure ad budget, execution, and outcome monitoring into one manageable loop.",
+      description: "Ad budget, execution, and output monitoring are managed in one clear control loop.",
       tags: ["Ads", "Budget", "Control"],
       filters: ["all", "ads"],
     },
@@ -1084,11 +1074,6 @@ const enConfig: SiteConfig = {
   exitCtaLine: "Before you leave, send your target and get a fast Telegram action plan.",
   exitCtaPrimary: "Start on Telegram",
   exitCtaSecondary: "Build My Offer",
-  motionToggle: {
-    ultra: "ULTRA",
-    lite: "LITE",
-  },
-  madeWithLine: "Made with React + Tailwind + Framer Motion",
   commandTitle: "Quick Commands",
   commandHint: "Ctrl/Cmd + K",
   commandPlaceholder: "Search section or type a command...",

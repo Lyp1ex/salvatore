@@ -18,9 +18,6 @@ export default function Contact({ site }: ContactProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative overflow-hidden rounded-3xl border border-[rgba(196,164,92,.34)] bg-[linear-gradient(130deg,rgba(255,255,255,.08),rgba(8,9,13,.92))] p-4 shadow-[0_26px_90px_rgba(0,0,0,.6)] backdrop-blur-xl sm:p-10"
       >
-        <div className="contact-pulse contact-pulse-one" aria-hidden />
-        <div className="contact-pulse contact-pulse-two" aria-hidden />
-
         <div className="relative z-10">
           <h2 className="text-3xl font-extrabold text-zinc-100 sm:text-5xl">{site.contactTitle}</h2>
           <p className="mt-4 max-w-2xl text-zinc-300">{site.contactLine}</p>
@@ -65,10 +62,6 @@ export default function Contact({ site }: ContactProps) {
                 <p>{site.socials.telegram.handle}</p>
                 <p>{site.socials.instagram.handle}</p>
               </div>
-
-              <p className="mt-8 border-t border-white/10 pt-4 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">
-                {site.madeWithLine}
-              </p>
             </div>
 
             <QuoteWizard site={site} />

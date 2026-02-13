@@ -1,13 +1,10 @@
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import AmbientLight from "./components/AmbientLight";
 import BackgroundFX from "./components/BackgroundFX";
 import ExitCta from "./components/ExitCta";
-import LuxuryCursor from "./components/LuxuryCursor";
 import MobileStickyCTA from "./components/MobileStickyCTA";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
-import StorylineRail from "./components/StorylineRail";
 import { siteConfigs, type Locale } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
@@ -91,13 +88,10 @@ function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
   );
 }
 
-type MotionMode = "ultra" | "lite";
-
 export default function App() {
   const [isBooting, setIsBooting] = useState(true);
   const [locale, setLocale] = useState<Locale>("tr");
   const [isCommandOpen, setIsCommandOpen] = useState(false);
-  const [motionMode, setMotionMode] = useState<MotionMode>("ultra");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("site-locale");
@@ -110,18 +104,6 @@ export default function App() {
     window.localStorage.setItem("site-locale", locale);
     document.documentElement.lang = locale;
   }, [locale]);
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("site-motion-mode");
-    if (saved === "ultra" || saved === "lite") {
-      setMotionMode(saved);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("site-motion-mode", motionMode);
-    document.documentElement.setAttribute("data-motion-mode", motionMode);
-  }, [motionMode]);
 
   const site = useMemo(() => siteConfigs[locale], [locale]);
 
@@ -191,28 +173,19 @@ export default function App() {
     setLocale((previous) => (previous === "tr" ? "en" : "tr"));
   };
 
-  const onToggleMotion = () => {
-    setMotionMode((previous) => (previous === "ultra" ? "lite" : "ultra"));
-  };
-
   const onNavigate = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <MotionConfig reducedMotion={motionMode === "lite" ? "always" : "user"}>
-      <div className={`relative min-h-screen text-zinc-100 ${motionMode === "lite" ? "motion-lite" : ""}`}>
-        <BackgroundFX lite={motionMode === "lite"} />
-        {motionMode === "ultra" ? <AmbientLight /> : null}
-        {motionMode === "ultra" ? <LuxuryCursor /> : null}
+    <MotionConfig reducedMotion="always">
+      <div className="motion-lite relative min-h-screen text-zinc-100">
+        <BackgroundFX lite />
         <ScrollProgress />
-        {motionMode === "ultra" ? <StorylineRail /> : null}
         <Navbar
           site={site}
           locale={locale}
-          motionMode={motionMode}
           onToggleLocale={onToggleLocale}
-          onToggleMotion={onToggleMotion}
           onOpenCommand={() => setIsCommandOpen(true)}
         />
 

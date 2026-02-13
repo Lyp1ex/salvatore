@@ -2,23 +2,17 @@ import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import type { Locale, SiteConfig } from "../config/site";
 
-type MotionMode = "ultra" | "lite";
-
 type NavbarProps = {
   site: SiteConfig;
   locale: Locale;
-  motionMode: MotionMode;
   onToggleLocale: () => void;
-  onToggleMotion: () => void;
   onOpenCommand: () => void;
 };
 
 export default function Navbar({
   site,
   locale,
-  motionMode,
   onToggleLocale,
-  onToggleMotion,
   onOpenCommand,
 }: NavbarProps) {
   const navItems = useMemo(
@@ -67,8 +61,6 @@ export default function Navbar({
     };
   }, [navItems]);
 
-  const motionLabel = motionMode === "ultra" ? site.motionToggle.ultra : site.motionToggle.lite;
-
   return (
     <header className="pointer-events-none fixed inset-x-0 top-3 z-50 px-3 sm:px-6">
       <nav className="pointer-events-auto mx-auto flex max-w-6xl items-center gap-1 rounded-2xl border border-[rgba(196,164,92,.26)] bg-[rgba(7,8,11,.62)] p-1.5 shadow-[0_10px_30px_rgba(0,0,0,.45)] backdrop-blur-xl">
@@ -99,14 +91,6 @@ export default function Navbar({
           className="shrink-0 rounded-full border border-[rgba(212,176,93,.28)] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)] sm:px-3 sm:text-[11px]"
         >
           {site.commandShortcutLabel}
-        </button>
-        <button
-          data-cursor="active"
-          onClick={onToggleMotion}
-          className="shrink-0 rounded-full border border-[rgba(212,176,93,.28)] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-zinc-300 transition hover:bg-[rgba(212,176,93,.14)] sm:px-3 sm:text-[11px]"
-          aria-label={motionLabel}
-        >
-          {motionLabel}
         </button>
         <button
           data-cursor="active"

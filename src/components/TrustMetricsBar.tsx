@@ -22,11 +22,8 @@ export default function TrustMetricsBar({ metrics }: TrustMetricsBarProps) {
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--lux-gold-soft)]">{metric.value}%</p>
           </div>
           <div className="trust-bar-shell mt-2 h-1.5 rounded-full bg-white/10">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${metric.value}%` }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.12 + index * 0.06, ease: "easeOut" }}
+            <div
+              style={{ width: `${metric.value}%` }}
               className="trust-bar-fill h-full rounded-full bg-[linear-gradient(90deg,var(--lux-gold),var(--lux-mint))]"
             />
           </div>
