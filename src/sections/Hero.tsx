@@ -27,10 +27,6 @@ export default function Hero({ site }: HeroProps) {
         transition={{ duration: 0.55, ease: "easeOut" }}
         className="hero-shell rounded-3xl border border-[rgba(196,164,92,.26)] bg-[linear-gradient(135deg,rgba(255,255,255,.08),rgba(10,11,14,.8))] px-5 py-10 shadow-neon backdrop-blur-xl sm:px-8 sm:py-14"
       >
-        <div className="hero-monogram" aria-hidden>
-          DS
-        </div>
-
         <span className="inline-flex rounded-full border border-[rgba(212,176,93,.45)] bg-[rgba(212,176,93,.14)] px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--lux-cream)]">
           {site.statusChip}
         </span>

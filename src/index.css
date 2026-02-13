@@ -52,19 +52,16 @@ body {
   isolation: isolate;
 }
 
-.hero-monogram {
+.hero-shell::before {
+  content: "";
   position: absolute;
-  right: 1.4rem;
-  top: 0.6rem;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(3.2rem, 9vw, 8.8rem);
-  font-style: italic;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  color: rgba(241, 228, 197, 0.08);
-  text-shadow: 0 0 24px rgba(212, 176, 93, 0.18);
-  user-select: none;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 240 132'%3E%3Ctext x='18' y='68' font-family='Georgia, serif' font-style='italic' font-size='34' fill='rgba(241,228,197,0.11)'%3EDS %E2%80%A2 DS%3C/text%3E%3C/svg%3E");
+  background-size: 240px 132px;
+  opacity: 0.2;
+  mix-blend-mode: screen;
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero-shell::after {
@@ -82,12 +79,12 @@ body {
   );
   animation: hero-sweep 7s ease-in-out infinite;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-shell > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .lux-title {
@@ -328,10 +325,6 @@ body {
     height: 24rem;
     filter: blur(82px);
   }
-
-  .hero-monogram {
-    right: 0.8rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -341,6 +334,7 @@ body {
 
   .blob,
   .scanline-layer,
+  .hero-shell::before,
   .hero-shell::after,
   .grid-layer,
   .cta-orbit-ring {

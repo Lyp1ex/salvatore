@@ -133,7 +133,7 @@ const trConfig: SiteConfig = {
   buttons: {
     primary: "İş Çıkaralım",
     secondary: "Neler Yapıyorum?",
-    openCase: "Mini Vakayı Aç",
+    openCase: "Genişlet",
   },
   tagline: "Script satışından kripto-finans akışına kadar müşteriye çalışan sistem kurarım.",
   microLine: "2017’den beri aynı çizgi: net plan, hızlı teslim, temiz sonuç.",
@@ -343,7 +343,7 @@ const enConfig: SiteConfig = {
   buttons: {
     primary: "Let's Build",
     secondary: "What I Do",
-    openCase: "Open Mini Case",
+    openCase: "Expand",
   },
   tagline: "From script sales to crypto-finance flow, I build systems that work for clients.",
   microLine: "Since 2017: clear plans, fast delivery, clean execution.",
