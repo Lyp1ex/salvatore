@@ -52,7 +52,6 @@ export default function Work({ site }: WorkProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <SectionTitle title={site.workTitle} eyebrow={site.workEyebrow} />
-        <p className="mb-6 max-w-3xl text-zinc-300">{site.workIntro}</p>
 
         <div className="hide-scrollbar mb-5 flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {site.serviceFilters.map((filter) => {

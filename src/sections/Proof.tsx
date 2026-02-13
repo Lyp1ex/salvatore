@@ -18,7 +18,6 @@ export default function Proof({ site }: ProofProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <SectionTitle title={site.proofTitle} eyebrow={site.proofEyebrow} />
-        <p className="mb-6 max-w-3xl text-zinc-300">{site.proofIntro}</p>
 
         <ProofStrip quotes={site.proofQuotes} />
 

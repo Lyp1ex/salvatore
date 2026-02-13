@@ -17,7 +17,6 @@ export default function About({ site }: AboutProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <SectionTitle title={site.aboutTitle} eyebrow={site.aboutEyebrow} />
-        <p className="mb-6 max-w-3xl text-zinc-300">{site.aboutIntro}</p>
 
         <div className="grid gap-5 lg:grid-cols-[1.3fr_.9fr]">
           <motion.div

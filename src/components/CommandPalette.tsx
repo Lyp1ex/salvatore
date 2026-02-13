@@ -36,7 +36,12 @@ export default function CommandPalette({
       { id: "work", label: site.nav.work, meta: "#work", action: () => onNavigate("work") },
       { id: "process", label: site.nav.process, meta: "#process", action: () => onNavigate("process") },
       { id: "proof", label: site.nav.proof, meta: "#proof", action: () => onNavigate("proof") },
-      { id: "faq", label: site.faqTitle, meta: "#faq", action: () => onNavigate("faq") },
+      {
+        id: "spotlight",
+        label: locale === "tr" ? "Vitrin" : "Spotlight",
+        meta: "#spotlight",
+        action: () => onNavigate("spotlight"),
+      },
       { id: "contact", label: site.nav.contact, meta: "#contact", action: () => onNavigate("contact") },
       {
         id: "telegram",

@@ -11,10 +11,10 @@ import StorylineRail from "./components/StorylineRail";
 import { siteConfigs, type Locale } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
-import Faq from "./sections/Faq";
 import Hero from "./sections/Hero";
 import Process from "./sections/Process";
 import Proof from "./sections/Proof";
+import Spotlight from "./sections/Spotlight";
 import Work from "./sections/Work";
 
 const CommandPalette = lazy(() => import("./components/CommandPalette"));
@@ -227,7 +227,7 @@ export default function App() {
           <div className="section-divider" />
           <Proof site={site} />
           <div className="section-divider" />
-          <Faq site={site} />
+          <Spotlight site={site} />
           <div className="section-divider" />
           <Contact site={site} />
         </main>

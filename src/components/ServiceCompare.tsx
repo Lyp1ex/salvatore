@@ -19,9 +19,6 @@ export default function ServiceCompare({ data }: ServiceCompareProps) {
   }, [data.premiumPoints, data.standardPoints]);
 
   const matrixTitle = isTurkish ? "Fark Matrisi" : "Difference Matrix";
-  const matrixHint = isTurkish
-    ? "Aynı başlık altında iki farklı yaklaşımın net çıktı farkı"
-    : "Clear output gap between two approaches under the same scope";
   const standardHint = isTurkish ? "Temel Akış" : "Base Flow";
   const premiumHint = isTurkish ? "Signature Akış" : "Signature Flow";
 
@@ -33,10 +30,7 @@ export default function ServiceCompare({ data }: ServiceCompareProps) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="relative mt-8 overflow-hidden rounded-3xl border border-[rgba(212,176,93,.28)] bg-[linear-gradient(130deg,rgba(255,255,255,.06),rgba(10,11,14,.84))] p-4 shadow-[0_30px_80px_rgba(0,0,0,.5)] sm:p-6"
     >
-      <div className="mb-5">
-        <h3 className="text-2xl font-bold text-zinc-100">{data.title}</h3>
-        <p className="mt-2 max-w-3xl text-sm text-zinc-300">{data.intro}</p>
-      </div>
+      <h3 className="mb-5 text-2xl font-bold text-zinc-100">{data.title}</h3>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <motion.article
@@ -80,10 +74,7 @@ export default function ServiceCompare({ data }: ServiceCompareProps) {
 
       <div className="mt-5 rounded-2xl border border-[rgba(212,176,93,.22)] bg-[rgba(8,10,14,.7)] p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">{matrixTitle}</p>
-            <p className="mt-1 text-xs text-zinc-400">{matrixHint}</p>
-          </div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--lux-gold-soft)]">{matrixTitle}</p>
           <span className="inline-flex items-center gap-1 rounded-full border border-[rgba(212,176,93,.3)] bg-[rgba(212,176,93,.08)] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-zinc-200">
             <HiArrowTrendingUp />
             {data.premiumLabel}
