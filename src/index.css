@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #06070b;
+  color: #f7f8fb;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.noise-layer {
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='%23ffffff' fill-opacity='0.8'%3E%3Ccircle cx='12' cy='15' r='0.7'/%3E%3Ccircle cx='76' cy='58' r='0.8'/%3E%3Ccircle cx='152' cy='40' r='0.65'/%3E%3Ccircle cx='37' cy='106' r='0.95'/%3E%3Ccircle cx='128' cy='128' r='0.8'/%3E%3Ccircle cx='99' cy='160' r='0.7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+.blob {
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 9999px;
+  filter: blur(95px);
+  opacity: 0.16;
+}
+
+.blob-one {
+  top: -12rem;
+  left: -10rem;
+  background: #68ffe5;
+  animation: blob-drift-one 22s ease-in-out infinite;
+}
+
+.blob-two {
+  right: -10rem;
+  top: 25%;
+  background: #8c72ff;
+  animation: blob-drift-two 24s ease-in-out infinite;
+}
+
+.blob-three {
+  bottom: -14rem;
+  left: 28%;
+  background: #4bffbc;
+  animation: blob-drift-three 26s ease-in-out infinite;
+}
+
+.scanline-layer {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  animation: scan-vertical 9s linear infinite;
+}
+
+@keyframes blob-drift-one {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4rem, 3rem, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes blob-drift-two {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-4rem, -2rem, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes blob-drift-three {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2rem, -4rem, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .blob {
+    width: 24rem;
+    height: 24rem;
+    filter: blur(82px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .blob,
+  .scanline-layer {
+    animation: none !important;
+  }
+}
