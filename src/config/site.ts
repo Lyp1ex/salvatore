@@ -22,6 +22,7 @@ export type SiteConfig = {
   highlights: string[];
   trustMetrics: { label: string; value: string }[];
   processSteps: { title: string; detail: string }[];
+  proofPillars: { title: string; detail: string }[];
   contactLine: string;
   madeWithLine: string;
   seo: {
@@ -136,6 +137,24 @@ export const siteConfig: SiteConfig = {
       title: "Kontrol + Teslim",
       detail:
         "Son kontrol sonrası kullanım hazır teslim yapılır. Müşteri tarafında günlük yönetim yükü düşer.",
+    },
+  ],
+  proofPillars: [
+    {
+      title: "Premium Disiplin",
+      detail: "Her işte aynı kalite standardı. Parça parça değil, sistemli ve kontrollü teslim.",
+    },
+    {
+      title: "Hızlı Dönüş",
+      detail: "Müşteri beklemez. Talepler kısa sürede net plana dönüşür ve süreç hızlı başlar.",
+    },
+    {
+      title: "Güvenli İletişim",
+      detail: "Konular uzamaz; net, sakin ve iş odaklı iletişimle süreç gereksiz gerginliğe girmez.",
+    },
+    {
+      title: "Sonuç Odak",
+      detail: "Amaç yalnızca gösterişli ekran değil, müşterinin operasyonunu gerçekten kolaylaştıran sonuç.",
     },
   ],
   contactLine:

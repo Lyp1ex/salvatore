@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import BackgroundFX from "./components/BackgroundFX";
+import LuxuryCursor from "./components/LuxuryCursor";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import { siteConfig } from "./config/site";
@@ -8,6 +9,7 @@ import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
 import Process from "./sections/Process";
+import Proof from "./sections/Proof";
 import Work from "./sections/Work";
 
 const upsertMeta = (key: "name" | "property", value: string, content: string) => {
@@ -76,6 +78,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen text-zinc-100">
       <BackgroundFX />
+      <LuxuryCursor />
       <ScrollProgress />
       <Navbar />
 
@@ -87,6 +90,8 @@ export default function App() {
         <Work />
         <div className="section-divider" />
         <Process />
+        <div className="section-divider" />
+        <Proof />
         <div className="section-divider" />
         <Contact />
       </main>

@@ -3,6 +3,7 @@ const navItems = [
   { href: "#about", label: "About" },
   { href: "#work", label: "Work" },
   { href: "#process", label: "Flow" },
+  { href: "#proof", label: "Proof" },
   { href: "#contact", label: "Contact" },
 ];
 
