@@ -14,11 +14,13 @@ export type SiteConfig = {
   displayName: string;
   tagline: string;
   microLine: string;
+  slogan: string;
   statusChip: string;
   aboutParagraphs: string[];
   quickFacts: string[];
   services: ServiceItem[];
   highlights: string[];
+  trustMetrics: { label: string; value: string }[];
   contactLine: string;
   madeWithLine: string;
   seo: {
@@ -35,22 +37,23 @@ export type SiteConfig = {
 
 export const siteConfig: SiteConfig = {
   displayName: "Salvatoré",
-  tagline: "Script paketleri, kripto-finans süreçleri ve reklam akışında düzeni kurarım.",
-  microLine: "2017’den beri aynı karakter: net iş, hızlı akış, premium sonuç.",
+  tagline: "Script satışından kripto-finans akışına kadar müşteriye çalışan sistem kurarım.",
+  microLine: "2017’den beri aynı çizgi: net plan, hızlı teslim, temiz sonuç.",
+  slogan: "Don Salvatore bir markadır.",
   statusChip: "DM açık • Aktif",
   aboutParagraphs: [
-    "2017’de Discord tarafında başladım. Kimliğim belliydi, iş kalitem belliydi, hâlâ aynı çizgideyim.",
-    "Sonra Telegram’a geçtim, tempo yükseldi ama standart hiç düşmedi. Nerede olursam olayım işin teslim kalitesi aynı.",
-    "Script paketleri üretirim, hazır setup çıkarırım, altyapıyı senin düzenine göre özelleştiririm. Sadece yazıp bırakmam, çalışır hale getiririm.",
-    "Kripto ve finans tarafında takip, akış, bakiye yönetimi görünürlüğü ve rapor düzeni kurarım. Reklam tarafında da sürecin kontrolünü düzenli hale getiririm.",
+    "2017’de Discord’da başladım, sonra Telegram’a geçtim. Platform değişti ama kalite standardım hiç değişmedi.",
+    "Müşterinin ihtiyacı neyse oradan girerim: script paketi, kurulum, özelleştirme veya komple akış düzeni.",
+    "Kripto, finans ve banka tarafındaki hareketleri daha okunur, daha düzenli bir yapıya çeviririm. Gereksiz karmaşayı temizler, kontrolü artırırım.",
+    "Reklam tarafında da süreçleri izlenebilir hale getiririm; bütçe, akış ve sonuç aynı masada net görünür.",
   ],
   quickFacts: [
     "2017’den beri aktif",
     "Discord → Telegram geçişi",
     "Web altyapıları / script paketleri",
     "Özelleştirme + kurulum",
-    "Kripto işlem süreç takibi",
-    "Finans akış düzeni + bakiye görünürlüğü",
+    "Kripto işlem akış takibi",
+    "Finans + banka hareket düzeni",
     "Reklam süreçlerinde kontrol ve rapor",
     "Hızlı teslim",
     "İletişim net",
@@ -77,19 +80,19 @@ export const siteConfig: SiteConfig = {
     {
       title: "Kripto Süreç Kurgusu",
       description:
-        "İşlem akışını ve günlük takibi sade bir düzende topluyorum. Kaos yerine kontrol hissi veriyor.",
+        "İşlem yoğunluğunu sade bir düzende topluyorum. Müşteri için kafa karışıklığı değil, kontrol hissi üretiyor.",
       tags: ["Kripto", "Takip", "Düzen"],
     },
     {
       title: "Finans Akış Düzeni",
       description:
-        "Finans tarafında akış, tablo ve rapor düzenini kuruyorum. Gün sonu kontrolü kolay, karar süreci net.",
-      tags: ["Finans", "Tablo", "Rapor"],
+        "Finans ve banka hareketlerinde akışı netleştiriyorum. Tablolar düzenli, günlük kontrol daha hızlı oluyor.",
+      tags: ["Finans", "Banka", "Rapor"],
     },
     {
       title: "Bakiye ve Hareket Takibi",
       description:
-        "Hareketleri dağınık bırakmadan izlenebilir hale getiriyorum. Nerede ne var sorusunu tek bakışta çözer.",
+        "Bakiye ve hareket görünürlüğünü tek çatıya topluyorum. Nerede ne var sorusu tek bakışta cevaplanıyor.",
       tags: ["Bakiye", "Takip", "Görünürlük"],
     },
     {
@@ -100,17 +103,23 @@ export const siteConfig: SiteConfig = {
     },
   ],
   highlights: [
-    "Script paketleri",
+    "Script satış akışı",
     "Kripto takip düzeni",
-    "Finans tablo akışı",
+    "Finans + banka görünürlüğü",
     "Reklam süreç kontrolü",
-    "Hızlı teslim",
+    "Premium teslim",
+  ],
+  trustMetrics: [
+    { label: "Sahnede", value: "2017+" },
+    { label: "Teslim Stili", value: "Hızlı" },
+    { label: "İletişim", value: "Net" },
+    { label: "Odak", value: "Sonuç" },
   ],
   contactLine:
-    "İş varsa yaz, direkt konuya girelim. Scriptten kripto-finans akışına kadar düzeni birlikte kurarız.",
+    "Müşteri gibi bakıyorsan doğru yerdesin. Yaz, kısa bir plan çıkaralım ve işi hızlıca devreye alalım.",
   madeWithLine: "Made with React + Tailwind + Framer Motion",
   seo: {
-    title: "Salvatoré | Script, Kripto ve Finans Akışı",
+    title: "Don Salvatore bir markadır | Script, Kripto ve Finans",
     description:
       "Salvatoré: 2017’den beri script paketleri, kripto-finans süreç düzeni, reklam akışı ve web altyapısında net, hızlı, temiz çözümler.",
     ogDescription:

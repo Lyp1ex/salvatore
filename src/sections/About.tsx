@@ -26,7 +26,7 @@ export default function About() {
           </Card>
 
           <Card>
-            <h3 className="text-xl font-bold text-zinc-100">Hızlı Bilgiler</h3>
+            <h3 className="text-xl font-bold text-zinc-100">Müşteri İçin Net Tablo</h3>
             <ul className="mt-4 space-y-2 text-sm text-zinc-300">
               {siteConfig.quickFacts.map((fact) => (
                 <li key={fact} className="flex items-start gap-2">
