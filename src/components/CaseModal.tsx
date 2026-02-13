@@ -41,9 +41,6 @@ export default function CaseModal({ item, index, total, labels, onClose, onPrevi
       className="fixed inset-0 z-[96] overflow-y-auto bg-[rgba(2,3,5,.82)] px-4 py-5 backdrop-blur-md"
       onClick={onClose}
     >
-      <div className="case-scene-glow case-scene-glow-one" aria-hidden />
-      <div className="case-scene-glow case-scene-glow-two" aria-hidden />
-
       <motion.div
         initial={{ opacity: 0, y: 18, scale: 0.985 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}

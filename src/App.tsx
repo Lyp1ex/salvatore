@@ -76,10 +76,10 @@ function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
             transition={{ duration: 0.28 }}
             className="absolute inset-0 m-auto flex h-fit w-fit flex-col items-center gap-2 text-center"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">kimlik yükleniyor</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">Salvatoré</p>
             <h2 className="signature-name text-4xl font-extrabold italic text-zinc-100 sm:text-5xl">{title}</h2>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--lux-gold-soft)]">
-              premium mode • 2017+
+              2017'den beri
             </p>
           </motion.div>
         </motion.div>

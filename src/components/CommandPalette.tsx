@@ -38,7 +38,7 @@ export default function CommandPalette({
       { id: "proof", label: site.nav.proof, meta: "#proof", action: () => onNavigate("proof") },
       {
         id: "spotlight",
-        label: locale === "tr" ? "Vitrin" : "Spotlight",
+        label: locale === "tr" ? "Seçili İşler" : "Selected Work",
         meta: "#spotlight",
         action: () => onNavigate("spotlight"),
       },

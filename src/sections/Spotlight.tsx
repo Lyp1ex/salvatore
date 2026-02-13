@@ -16,10 +16,10 @@ const compact = (text: string) => {
 export default function Spotlight({ site }: SpotlightProps) {
   const isEnglish = site.localeLabel.startsWith("EN");
 
-  const title = isEnglish ? "Spotlight" : "Vitrin";
-  const eyebrow = isEnglish ? "signature feed" : "signature akış";
-  const pulseLabel = isEnglish ? "live cut" : "canlı kesit";
-  const quoteLabel = isEnglish ? "direct feedback" : "direkt geri bildirim";
+  const title = isEnglish ? "Selected Work" : "Seçili İşler";
+  const eyebrow = isEnglish ? "portfolio" : "portföy";
+  const pulseLabel = isEnglish ? "project summary" : "proje özeti";
+  const quoteLabel = isEnglish ? "client feedback" : "müşteri geri bildirimi";
 
   return (
     <section id="spotlight" className="scroll-mt-24 py-14 sm:py-20">

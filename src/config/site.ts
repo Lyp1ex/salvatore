@@ -235,27 +235,27 @@ const baseSocials = {
 const trConfig: SiteConfig = {
   displayName: "Salvatoré",
   nav: {
-    home: "Home",
-    about: "About",
-    work: "Work",
-    process: "Flow",
-    proof: "Proof",
-    contact: "Contact",
+    home: "Ana Sayfa",
+    about: "Ben Kimim",
+    work: "Hizmetler",
+    process: "Süreç",
+    proof: "Güven",
+    contact: "İletişim",
   },
   localeLabel: "TR / EN",
-  commandShortcutLabel: "Cmd K",
+  commandShortcutLabel: "Kısayol",
   buttons: {
     primary: "İş Çıkaralım",
     secondary: "Neler Yapıyorum?",
     openCase: "Genişlet",
   },
-  tagline: "Script satışından kripto-finans akışına kadar müşteriye çalışan sistem kurarım.",
+  tagline: "Web, script, kripto ve finans tarafında düzenli çalışan operasyon altyapısı kurarım.",
   microLine: "2017’den beri aynı çizgi: net plan, hızlı teslim, temiz sonuç.",
   slogan: "Don Salvatore bir markadır.",
-  statusChip: "DM açık • Aktif",
-  heroSignatureLine: "Signature akış: Script + Kripto + Finans + Reklam",
+  statusChip: "İletişime Açık",
+  heroSignatureLine: "Web • Script • Kripto • Finans • Reklam",
   aboutTitle: "Ben kimim?",
-  aboutEyebrow: "kimlik",
+  aboutEyebrow: "hakkımda",
   aboutIntro:
     "Burada amaç havalı görünmek değil, müşterinin gerçekten işine yarayan düzeni kurmak. Çizgi net, sonuç odak net.",
   aboutParagraphs: [
@@ -277,9 +277,9 @@ const trConfig: SiteConfig = {
     "İletişim net",
   ],
   workTitle: "Hizmet Alanları",
-  workEyebrow: "operasyon kapsamı",
+  workEyebrow: "hizmet kapsamı",
   workIntro:
-    "Buradaki bütün hizmetler tek hedefe oynar: müşterinin işini hızlandırmak, dağınıklığı toplamak, süreci görünür ve yönetilebilir hale getirmek.",
+    "Hizmetlerin tamamı net operasyon, hızlı teslim ve sürdürülebilir düzen hedefiyle kurgulanır.",
   serviceFilters: [
     { id: "all", label: "Hepsi" },
     { id: "script", label: "Script" },
@@ -395,13 +395,13 @@ const trConfig: SiteConfig = {
       ],
     },
     {
-      name: "Signature",
-      subtitle: "Tam premium operasyon sistemi",
+      name: "Özel",
+      subtitle: "Geniş kapsamlı operasyon sistemi",
       featured: true,
       points: [
         "Script + kripto + finans + reklam ritmi",
         "Operasyon akışının uçtan uca kurgusu",
-        "Yüksek hızda premium teslim standardı",
+        "Yüksek hızda düzenli teslim standardı",
       ],
     },
   ],
@@ -483,10 +483,10 @@ const trConfig: SiteConfig = {
     },
   ],
   comparison: {
-    title: "Standart Kurulum vs Signature Kurulum",
-    intro: "Aynı iş başlığı, farklı sonuç. Signature tarafta hız, görünürlük ve sürdürülebilirlik birlikte gelir.",
+    title: "Standart Kurulum / Özel Kurulum",
+    intro: "Aynı başlık altında kapsam farkı teslim kalitesini doğrudan etkiler.",
     standardLabel: "Standart",
-    premiumLabel: "Signature",
+    premiumLabel: "Özel",
     standardPoints: [
       "Temel kurulum yapılır",
       "Parça parça takip gerekir",
@@ -494,19 +494,19 @@ const trConfig: SiteConfig = {
       "İletişim çoğu zaman dağınık ilerler",
     ],
     premiumPoints: [
-      "Kurulum + akış kurgusu birlikte çıkar",
-      "Kripto/finans/reklam tarafı tek ritimde görünür",
+      "Kurulum ve süreç kurgusu birlikte planlanır",
+      "Kripto, finans ve reklam tarafı tek düzende izlenir",
       "Kontrol panosu ve takip düzeni ilk günden aktif olur",
       "Hızlı dönüş, net iletişim, düzenli teslim standardı",
     ],
   },
   proofTitle: "Neden güven veriyor?",
-  proofEyebrow: "proof wall",
+  proofEyebrow: "güven unsurları",
   proofIntro:
     "Müşteri içeride kaldığında sebep tasarım değil sadece; akışın netliği, teslimin hızı ve sürecin güven vermesi.",
   proofPillars: [
     {
-      title: "Premium Disiplin",
+      title: "Kalite Disiplini",
       detail: "Her işte aynı kalite standardı. Parça parça değil, sistemli ve kontrollü teslim.",
     },
     {
@@ -545,11 +545,11 @@ const trConfig: SiteConfig = {
     },
   ],
   reelWords: [
-    "Script satış akışı",
+    "Script satış düzeni",
     "Kripto süreç kontrolü",
     "Finans + banka görünürlüğü",
     "Reklam operasyon ritmi",
-    "Signature teslim standardı",
+    "Düzenli teslim standardı",
   ],
   trustMetrics: [
     {
@@ -569,8 +569,8 @@ const trConfig: SiteConfig = {
     },
   ],
   quoteWizard: {
-    title: "Teklif Sihirbazı",
-    intro: "3 adımda ne istediğini seç, hazır mesaj direkt Telegram'a düşsün.",
+    title: "Hızlı Talep Formu",
+    intro: "Kısa bilgilerle talebini ilet, net planla hızlıca başlayalım.",
     stepLabels: ["Hizmet", "Bütçe", "Süre", "Not"],
     prompts: {
       service: "Hangi ana başlık lazım?",
@@ -597,11 +597,11 @@ const trConfig: SiteConfig = {
     readyLabel: "Hazır mesaj",
   },
   highlights: [
-    "Script satış akışı",
+    "Script satış düzeni",
     "Kripto takip düzeni",
     "Finans + banka görünürlüğü",
     "Reklam süreç kontrolü",
-    "Premium teslim",
+    "Düzenli teslim",
   ],
   counterMetrics: [
     { label: "Sahnede", value: 2017, suffix: "+" },
@@ -610,9 +610,9 @@ const trConfig: SiteConfig = {
     { label: "Kalite", value: 1, suffix: "st" },
   ],
   contactTitle: "İletişim",
-  contactLine: "Müşteri gibi bakıyorsan doğru yerdesin. Yaz, kısa bir plan çıkaralım ve işi hızlıca devreye alalım.",
-  contactHint: "İlk mesaj formatı: hizmet türü + hedef + süre",
-  finalCtaEyebrow: "Final CTA",
+  contactLine: "İhtiyacını net yaz, kapsamı birlikte belirleyelim ve süreci hızlıca başlatalım.",
+  contactHint: "İlk mesaj: hizmet türü + hedef + teslim süresi",
+  finalCtaEyebrow: "Hızlı Başlangıç",
   finalCtaLine: "Hedefi net yaz, en doğru akışı hızlıca çıkaralım. Karmaşayı değil sonucu konuşalım.",
   faqTitle: "Sık Sorulanlar",
   faqEyebrow: "itiraz kırıcı",
@@ -639,14 +639,14 @@ const trConfig: SiteConfig = {
       answer: "Evet. Karmaşayı azaltıp görünürlüğü artırdığı için küçük ekipte daha da hızlı sonuç verir.",
     },
   ],
-  faqCtaLabel: "Teklif sihirbazına geç",
+  faqCtaLabel: "Talep formunu aç",
   exitCtaTitle: "Hazırsan başlatalım",
   exitCtaLine: "Çıkmadan önce hedefini yaz, Telegram’dan hızlı planı atalım.",
   exitCtaPrimary: "Telegram'dan Başlat",
   exitCtaSecondary: "Bana Teklif Çıkar",
-  commandTitle: "Hızlı Komutlar",
+  commandTitle: "Kısa Yol",
   commandHint: "Ctrl/Cmd + K",
-  commandPlaceholder: "Bölüm ara veya komut yaz...",
+  commandPlaceholder: "Bölüm ara...",
   commandEmpty: "Komut bulunamadı.",
   mobileCtaLabel: "Telegram'dan Yaz",
   mobileCtaHint: "Hızlı dönüş",
@@ -658,7 +658,7 @@ const trConfig: SiteConfig = {
     previous: "Önceki",
     next: "Sonraki",
     progress: "İlerleme",
-    eyebrow: "signature case",
+    eyebrow: "vaka özeti",
     keyboardHint: "Esc kapatır • Ok tuşları kartları gezer",
     sceneNote: "Bu kart, müşterinin dağınık akıştan kontrollü düzene geçişinin kısa operasyon özetidir.",
   },
@@ -669,7 +669,7 @@ const trConfig: SiteConfig = {
     ogDescription:
       "Discord’dan Telegram’a taşınan aynı kalite: script paketleri, kripto-finans düzeni, reklam süreç kontrolü ve web altyapı kurgusu.",
     twitterDescription:
-      "Script paketleri, kripto-finans süreç düzeni ve reklam akışını sade şekilde yöneten signature profil sayfası.",
+      "Script paketleri, kripto-finans süreç düzeni ve reklam yönetimine odaklanan profesyonel profil sayfası.",
     keywords: [
       "Salvatore",
       "script paketleri",
@@ -686,25 +686,25 @@ const enConfig: SiteConfig = {
   nav: {
     home: "Home",
     about: "About",
-    work: "Work",
-    process: "Flow",
-    proof: "Proof",
+    work: "Services",
+    process: "Process",
+    proof: "Trust",
     contact: "Contact",
   },
   localeLabel: "EN / TR",
-  commandShortcutLabel: "Cmd K",
+  commandShortcutLabel: "Shortcut",
   buttons: {
     primary: "Let's Build",
     secondary: "What I Do",
     openCase: "Expand",
   },
-  tagline: "From script sales to crypto-finance flow, I build systems that work for clients.",
+  tagline: "I build structured web and operations systems across script, crypto, finance, and ads.",
   microLine: "Since 2017: clear plans, fast delivery, clean execution.",
   slogan: "Don Salvatore is a brand.",
-  statusChip: "DM open • Active",
-  heroSignatureLine: "Signature flow: Script + Crypto + Finance + Ads",
+  statusChip: "Available",
+  heroSignatureLine: "Web • Script • Crypto • Finance • Ads",
   aboutTitle: "Who am I?",
-  aboutEyebrow: "identity",
+  aboutEyebrow: "about",
   aboutIntro:
     "This page is not about looking cool. It is about creating a structure that truly works for clients.",
   aboutParagraphs: [
@@ -834,13 +834,13 @@ const enConfig: SiteConfig = {
       ],
     },
     {
-      name: "Signature",
-      subtitle: "Full premium operations system",
+      name: "Advanced",
+      subtitle: "Extended operations system",
       featured: true,
       points: [
         "Script + crypto + finance + ad rhythm",
         "End-to-end operation architecture",
-        "High-speed premium delivery standard",
+        "High-speed and consistent delivery standard",
       ],
     },
   ],
@@ -918,10 +918,10 @@ const enConfig: SiteConfig = {
     },
   ],
   comparison: {
-    title: "Standard Setup vs Signature Setup",
-    intro: "Same service label, different output. Signature means speed, visibility, and consistency together.",
+    title: "Standard Setup vs Advanced Setup",
+    intro: "Under the same title, scope level directly changes delivery quality.",
     standardLabel: "Standard",
-    premiumLabel: "Signature",
+    premiumLabel: "Advanced",
     standardPoints: [
       "Basic setup is completed",
       "Tracking stays fragmented",
@@ -936,12 +936,12 @@ const enConfig: SiteConfig = {
     ],
   },
   proofTitle: "Why it feels reliable",
-  proofEyebrow: "proof wall",
+  proofEyebrow: "trust factors",
   proofIntro:
     "Users stay because it is not only visual. It is structured, predictable, and built for practical control.",
   proofPillars: [
     {
-      title: "Premium Discipline",
+      title: "Quality Discipline",
       detail: "Consistent quality standard from kickoff to delivery.",
     },
     {
@@ -984,7 +984,7 @@ const enConfig: SiteConfig = {
     "Crypto flow clarity",
     "Finance + banking visibility",
     "Ad process rhythm",
-    "Signature delivery standard",
+    "Consistent delivery standard",
   ],
   trustMetrics: [
     {
@@ -1004,8 +1004,8 @@ const enConfig: SiteConfig = {
     },
   ],
   quoteWizard: {
-    title: "Offer Wizard",
-    intro: "Choose in 3 steps and send a ready message directly to Telegram.",
+    title: "Quick Request Form",
+    intro: "Share your needs briefly and start with a clear execution plan.",
     stepLabels: ["Service", "Budget", "Timeline", "Note"],
     prompts: {
       service: "Which main area do you need?",
@@ -1031,7 +1031,7 @@ const enConfig: SiteConfig = {
     },
     readyLabel: "Ready message",
   },
-  highlights: ["Script sales flow", "Crypto tracking", "Finance visibility", "Ad control", "Premium delivery"],
+  highlights: ["Script sales structure", "Crypto tracking", "Finance visibility", "Ad control", "Consistent delivery"],
   counterMetrics: [
     { label: "Active Since", value: 2017, suffix: "+" },
     { label: "Delivery", value: 24, suffix: "h" },
@@ -1040,9 +1040,9 @@ const enConfig: SiteConfig = {
   ],
   contactTitle: "Contact",
   contactLine:
-    "If you are looking through a client lens, you are in the right place. Send a message and we launch with a clear plan.",
-  contactHint: "First message format: service type + target + timeline",
-  finalCtaEyebrow: "Final CTA",
+    "Share your need clearly, define the scope, and we can start with a focused execution plan.",
+  contactHint: "First message: service type + goal + timeline",
+  finalCtaEyebrow: "Quick Start",
   finalCtaLine: "Share the target clearly and we will map the fastest execution flow without noise.",
   faqTitle: "Frequently Asked",
   faqEyebrow: "objection breaker",
@@ -1069,14 +1069,14 @@ const enConfig: SiteConfig = {
       answer: "Yes. It removes noise and improves visibility, which helps small teams even more.",
     },
   ],
-  faqCtaLabel: "Open offer wizard",
+  faqCtaLabel: "Open request form",
   exitCtaTitle: "Ready to launch?",
   exitCtaLine: "Before you leave, send your target and get a fast Telegram action plan.",
   exitCtaPrimary: "Start on Telegram",
   exitCtaSecondary: "Build My Offer",
-  commandTitle: "Quick Commands",
+  commandTitle: "Quick Access",
   commandHint: "Ctrl/Cmd + K",
-  commandPlaceholder: "Search section or type a command...",
+  commandPlaceholder: "Search section...",
   commandEmpty: "No command found.",
   mobileCtaLabel: "Message on Telegram",
   mobileCtaHint: "Fast reply",
@@ -1088,18 +1088,18 @@ const enConfig: SiteConfig = {
     previous: "Previous",
     next: "Next",
     progress: "Progress",
-    eyebrow: "signature case",
+    eyebrow: "case summary",
     keyboardHint: "Esc closes • Arrow keys navigate cards",
     sceneNote: "This card is a compact operation brief showing how messy flow becomes controlled execution.",
   },
   seo: {
     title: "Don Salvatore is a brand | Script, Crypto and Finance",
     description:
-      "Salvatoré delivers premium script packs, crypto-finance flow structuring, ad operations and web infrastructure since 2017.",
+      "Salvatoré delivers structured script packs, crypto-finance operations support, ad process management, and web infrastructure since 2017.",
     ogDescription:
       "Consistent quality from Discord to Telegram: script packs, crypto-finance structure, ad process control and web systems.",
     twitterDescription:
-      "A signature page focused on script services, crypto-finance flow and ad operation clarity.",
+      "A professional profile page focused on script services, crypto-finance operations, and ad process clarity.",
     keywords: [
       "Salvatore",
       "script packs",

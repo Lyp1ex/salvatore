@@ -31,20 +31,16 @@ export default function Contact({ site }: ContactProps) {
               <p className="mt-2 text-sm text-zinc-300">{site.finalCtaLine}</p>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
-                <div className="cta-orbit" data-cursor="active">
-                  <span className="cta-orbit-ring" aria-hidden />
-                  <span className="cta-orbit-ring cta-orbit-ring-delay" aria-hidden />
-                  <Button
-                    href={site.socials.telegram.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    variant="primary"
-                    className="w-full gap-2 px-6 py-3 text-base sm:w-auto"
-                  >
-                    <FaTelegramPlane />
-                    {site.mobileCtaLabel}
-                  </Button>
-                </div>
+                <Button
+                  href={site.socials.telegram.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="primary"
+                  className="w-full gap-2 px-6 py-3 text-base sm:w-auto"
+                >
+                  <FaTelegramPlane />
+                  {site.mobileCtaLabel}
+                </Button>
 
                 <Button
                   href={site.socials.instagram.url}

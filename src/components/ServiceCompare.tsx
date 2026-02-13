@@ -19,8 +19,8 @@ export default function ServiceCompare({ data }: ServiceCompareProps) {
   }, [data.premiumPoints, data.standardPoints]);
 
   const matrixTitle = isTurkish ? "Fark Matrisi" : "Difference Matrix";
-  const standardHint = isTurkish ? "Temel Akış" : "Base Flow";
-  const premiumHint = isTurkish ? "Signature Akış" : "Signature Flow";
+  const standardHint = isTurkish ? "Temel Kurulum" : "Standard Setup";
+  const premiumHint = isTurkish ? "Özel Kurulum" : "Advanced Setup";
 
   return (
     <motion.div
