@@ -13,7 +13,6 @@ import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Faq from "./sections/Faq";
 import Hero from "./sections/Hero";
-import Packages from "./sections/Packages";
 import Process from "./sections/Process";
 import Proof from "./sections/Proof";
 import Work from "./sections/Work";
@@ -70,21 +69,20 @@ function BootOverlay({ visible, title }: { visible: boolean; title: string }) {
       {visible ? (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.45, ease: "easeOut" } }}
+          exit={{ opacity: 0, transition: { duration: 0.35, ease: "easeOut" } }}
           className="pointer-events-none fixed inset-0 z-[80] bg-[#050507]"
         >
-          <div className="scanline-layer absolute inset-0" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_24%,_rgba(212,176,93,.16),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_24%,_rgba(212,176,93,.12),_transparent_45%)]" />
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.28 }}
             className="absolute inset-0 m-auto flex h-fit w-fit flex-col items-center gap-2 text-center"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.32em] text-zinc-400">kimlik senkronlanıyor</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">kimlik yükleniyor</p>
             <h2 className="signature-name text-4xl font-extrabold italic text-zinc-100 sm:text-5xl">{title}</h2>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--lux-gold-soft)]">
-              sinyal kilitlendi • 2017+
+              premium mode • 2017+
             </p>
           </motion.div>
         </motion.div>
@@ -173,7 +171,7 @@ export default function App() {
       ],
     });
 
-    const timer = window.setTimeout(() => setIsBooting(false), 1400);
+    const timer = window.setTimeout(() => setIsBooting(false), 900);
     return () => window.clearTimeout(timer);
   }, [locale, site]);
 
@@ -224,8 +222,6 @@ export default function App() {
           <About site={site} />
           <div className="section-divider" />
           <Work site={site} />
-          <div className="section-divider" />
-          <Packages site={site} />
           <div className="section-divider" />
           <Process site={site} />
           <div className="section-divider" />

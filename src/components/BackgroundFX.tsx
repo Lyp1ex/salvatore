@@ -17,10 +17,10 @@ const createParticles = (count: number, width: number, height: number): Particle
   Array.from({ length: count }, () => ({
     x: random(0, width),
     y: random(0, height),
-    vx: random(-0.12, 0.12),
-    vy: random(-0.08, 0.08),
-    size: random(0.8, 2.6),
-    alpha: random(0.16, 0.48),
+    vx: random(-0.08, 0.08),
+    vy: random(-0.05, 0.05),
+    size: random(0.8, 2.2),
+    alpha: random(0.12, 0.3),
   }));
 
 type BackgroundFXProps = {
@@ -56,8 +56,8 @@ export default function BackgroundFX({ lite = false }: BackgroundFXProps) {
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const targetCount = prefersReducedMotion
-        ? 10
-        : Math.min(34, Math.max(14, Math.floor((width * height) / 90000)));
+        ? 8
+        : Math.min(22, Math.max(10, Math.floor((width * height) / 120000)));
       particles = createParticles(targetCount, width, height);
     };
 
@@ -105,7 +105,7 @@ export default function BackgroundFX({ lite = false }: BackgroundFXProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,_rgba(123,215,200,0.1)_0%,_transparent_40%)]" />
       <div className="grid-layer absolute inset-0" />
       <div className="noise-layer absolute inset-0" />
-      {lite ? null : <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-55" />}
+      {lite ? null : <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-35" />}
     </div>
   );
 }

@@ -34,7 +34,6 @@ export default function CommandPalette({
       { id: "home", label: site.nav.home, meta: "#home", action: () => onNavigate("home") },
       { id: "about", label: site.nav.about, meta: "#about", action: () => onNavigate("about") },
       { id: "work", label: site.nav.work, meta: "#work", action: () => onNavigate("work") },
-      { id: "packages", label: site.packageTitle, meta: "#packages", action: () => onNavigate("packages") },
       { id: "process", label: site.nav.process, meta: "#process", action: () => onNavigate("process") },
       { id: "proof", label: site.nav.proof, meta: "#proof", action: () => onNavigate("proof") },
       { id: "faq", label: site.faqTitle, meta: "#faq", action: () => onNavigate("faq") },

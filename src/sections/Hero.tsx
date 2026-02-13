@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
-import SignatureReel from "../components/SignatureReel";
 import TrustMetricsBar from "../components/TrustMetricsBar";
 import type { SiteConfig } from "../config/site";
 
@@ -18,7 +17,6 @@ export default function Hero({ site }: HeroProps) {
   });
 
   const foregroundY = useTransform(scrollYProgress, [0, 1], [0, -20]);
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -68]);
 
   return (
     <section ref={sectionRef} id="home" className="scroll-mt-24 pt-14 sm:pt-20">
@@ -37,13 +35,6 @@ export default function Hero({ site }: HeroProps) {
           <motion.h1
             style={{ y: foregroundY }}
             className="signature-name relative z-10 text-[3.2rem] font-extrabold italic leading-[0.9] text-zinc-50 sm:text-8xl"
-          >
-            {site.displayName}
-          </motion.h1>
-          <motion.h1
-            aria-hidden
-            style={{ y: backgroundY }}
-            className="pointer-events-none absolute inset-0 z-0 hidden text-6xl font-extrabold italic leading-[0.9] text-[rgba(212,176,93,.16)] blur-[1px] sm:block sm:text-8xl"
           >
             {site.displayName}
           </motion.h1>
@@ -67,23 +58,15 @@ export default function Hero({ site }: HeroProps) {
           {site.heroSignatureLine}
         </p>
 
-        <SignatureReel words={site.reelWords} />
-
-        <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-3">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 18, ease: "linear", repeat: Infinity }}
-            className="flex min-w-max gap-2 px-3"
-          >
-            {[...site.highlights, ...site.highlights].map((item, index) => (
-              <span
-                key={`${item}-${index}`}
-                className="rounded-full border border-cyan-200/25 bg-zinc-900/70 px-3 py-1 text-[10px] uppercase tracking-wide text-zinc-200 sm:text-xs"
-              >
-                {item}
-              </span>
-            ))}
-          </motion.div>
+        <div className="mt-7 flex flex-wrap gap-2">
+          {site.highlights.slice(0, 5).map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-[rgba(212,176,93,.26)] bg-[rgba(212,176,93,.08)] px-3 py-1 text-[10px] uppercase tracking-wide text-zinc-200 sm:text-xs"
+            >
+              {item}
+            </span>
+          ))}
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">

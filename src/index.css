@@ -72,7 +72,7 @@ body {
 .signature-name {
   font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 24px rgba(212, 176, 93, 0.2), 0 0 42px rgba(120, 213, 199, 0.14);
+  text-shadow: none;
 }
 
 .hero-shell {
@@ -84,10 +84,10 @@ body {
 .hero-shell::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 240 132'%3E%3Ctext x='18' y='68' font-family='Georgia, serif' font-style='italic' font-size='34' fill='rgba(241,228,197,0.11)'%3EDS %E2%80%A2 DS%3C/text%3E%3C/svg%3E");
-  background-size: 240px 132px;
-  opacity: 0.2;
+  inset: -14%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg transform='rotate(-22 80 80)' fill='rgba(241,228,197,0.1)' font-family='Georgia,serif' font-style='italic' font-size='16'%3E%3Ctext x='6' y='30'%3EDS%3C/text%3E%3Ctext x='56' y='30'%3EDS%3C/text%3E%3Ctext x='106' y='30'%3EDS%3C/text%3E%3Ctext x='26' y='68'%3EDS%3C/text%3E%3Ctext x='76' y='68'%3EDS%3C/text%3E%3Ctext x='126' y='68'%3EDS%3C/text%3E%3Ctext x='6' y='106'%3EDS%3C/text%3E%3Ctext x='56' y='106'%3EDS%3C/text%3E%3Ctext x='106' y='106'%3EDS%3C/text%3E%3Ctext x='26' y='144'%3EDS%3C/text%3E%3Ctext x='76' y='144'%3EDS%3C/text%3E%3Ctext x='126' y='144'%3EDS%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  opacity: 0.18;
   mix-blend-mode: screen;
   pointer-events: none;
   z-index: 0;
@@ -96,17 +96,18 @@ body {
 .hero-shell::after {
   content: "";
   position: absolute;
-  inset: -130% auto auto -35%;
-  width: 45%;
-  height: 360%;
-  transform: rotate(18deg);
+  inset: auto -22% -65% auto;
+  width: 62%;
+  height: 62%;
+  transform: none;
   background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(212, 176, 93, 0.2),
+    145deg,
+    rgba(212, 176, 93, 0.1),
+    rgba(120, 213, 199, 0.06),
     rgba(255, 255, 255, 0)
   );
-  animation: hero-sweep 7s ease-in-out infinite;
+  filter: blur(12px);
+  opacity: 0.5;
   pointer-events: none;
   z-index: 1;
 }
@@ -143,28 +144,28 @@ body {
   height: 32rem;
   border-radius: 9999px;
   filter: blur(105px);
-  opacity: 0.14;
+  opacity: 0.09;
 }
 
 .blob-one {
   top: -12rem;
   left: -10rem;
   background: #b9974f;
-  animation: blob-drift-one 22s ease-in-out infinite;
+  animation: blob-drift-one 28s ease-in-out infinite;
 }
 
 .blob-two {
   right: -10rem;
   top: 25%;
   background: #699ca8;
-  animation: blob-drift-two 24s ease-in-out infinite;
+  animation: blob-drift-two 30s ease-in-out infinite;
 }
 
 .blob-three {
   bottom: -14rem;
   left: 28%;
   background: #7ed2b0;
-  animation: blob-drift-three 26s ease-in-out infinite;
+  animation: blob-drift-three 32s ease-in-out infinite;
 }
 
 .section-divider {
