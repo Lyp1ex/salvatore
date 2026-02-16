@@ -66,6 +66,12 @@ body {
   display: none;
 }
 
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
 .signature-name {
   font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.03em;
@@ -234,7 +240,27 @@ body {
 
 .lux-sweep-card::after,
 .lux-sweep-btn::after {
-  display: none;
+  content: "";
+  position: absolute;
+  inset: -150% auto auto -24%;
+  width: 38%;
+  height: 360%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(241, 228, 197, 0.26),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  pointer-events: none;
+}
+
+.lux-sweep-card:hover::after,
+.lux-sweep-btn:hover::after {
+  opacity: 1;
+  animation: sweep-pass 0.95s ease;
 }
 
 .signature-reel {
@@ -436,6 +462,15 @@ body {
   }
   100% {
     transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes sweep-pass {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 122%;
   }
 }
 

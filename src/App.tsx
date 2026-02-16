@@ -1,10 +1,13 @@
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import AmbientLight from "./components/AmbientLight";
 import BackgroundFX from "./components/BackgroundFX";
 import ExitCta from "./components/ExitCta";
+import LuxuryCursor from "./components/LuxuryCursor";
 import MobileStickyCTA from "./components/MobileStickyCTA";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
+import StorylineRail from "./components/StorylineRail";
 import { siteConfigs, type Locale } from "./config/site";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
@@ -178,10 +181,13 @@ export default function App() {
   };
 
   return (
-    <MotionConfig reducedMotion="always">
-      <div className="motion-lite relative min-h-screen text-zinc-100">
-        <BackgroundFX lite />
+    <MotionConfig reducedMotion="user">
+      <div className="relative min-h-screen text-zinc-100">
+        <BackgroundFX />
+        <AmbientLight />
+        <LuxuryCursor />
         <ScrollProgress />
+        <StorylineRail />
         <Navbar
           site={site}
           locale={locale}

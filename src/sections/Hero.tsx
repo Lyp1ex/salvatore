@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Button from "../components/Button";
+import SignatureReel from "../components/SignatureReel";
 import TrustMetricsBar from "../components/TrustMetricsBar";
 import type { SiteConfig } from "../config/site";
 
@@ -85,6 +86,7 @@ export default function Hero({ site }: HeroProps) {
         <div className="mt-7">
           <TrustMetricsBar metrics={site.trustMetrics} />
         </div>
+        <SignatureReel words={site.reelWords} />
       </motion.div>
     </section>
   );
