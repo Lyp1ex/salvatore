@@ -1,10 +1,10 @@
 {
-  "name": "Salvatore Signature",
-  "short_name": "Salvatore",
+  "name": "Iclal Surpriz",
+  "short_name": "Iclal",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#020907",
-  "theme_color": "#020907",
+  "background_color": "#06080c",
+  "theme_color": "#06080c",
   "icons": [
     {
       "src": "/icon.svg",
