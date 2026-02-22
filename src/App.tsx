@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { type FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { FaHeart, FaLock, FaUnlockAlt } from "react-icons/fa";
 
-const SECRET_PASSWORD = "iclal";
+const DEFAULT_SECRET_HASH = "3ad6c825b0ca916eed2ebcea64e3bf367da7d28de9d8d8097c9312cac7f43fb0";
+const MAX_ATTEMPTS = 4;
+const LOCK_DURATION_MS = 30_000;
 const PASSWORD_HINT = "seni en çok kim sever?";
 
 const reasons = [
@@ -42,6 +44,17 @@ const normalize = (value: string): string => {
     .replace(/[^a-z0-9]/g, "");
 };
 
+const toHex = (buffer: ArrayBuffer): string =>
+  Array.from(new Uint8Array(buffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+
+const sha256 = async (value: string): Promise<string> => {
+  const encoded = new TextEncoder().encode(value);
+  const digest = await window.crypto.subtle.digest("SHA-256", encoded);
+  return toHex(digest);
+};
+
 function Background() {
   return (
     <div className="bg-layer" aria-hidden="true">
@@ -75,19 +88,79 @@ function App() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [shake, setShake] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [lockedUntil, setLockedUntil] = useState<number | null>(null);
+  const [now, setNow] = useState(Date.now());
 
-  const normalizedSecret = useMemo(() => normalize(SECRET_PASSWORD), []);
+  const secretHash = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_SURPRISE_PASSWORD_HASH;
+    return typeof fromEnv === "string" && fromEnv.trim().length > 0
+      ? fromEnv.trim().toLowerCase()
+      : DEFAULT_SECRET_HASH;
+  }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const secondsLeft = lockedUntil ? Math.max(0, Math.ceil((lockedUntil - now) / 1000)) : 0;
+  const isLocked = secondsLeft > 0;
+
+  useEffect(() => {
+    if (!lockedUntil) return;
+
+    const timer = window.setInterval(() => {
+      setNow(Date.now());
+    }, 250);
+
+    return () => window.clearInterval(timer);
+  }, [lockedUntil]);
+
+  useEffect(() => {
+    if (!lockedUntil) return;
+    if (Date.now() >= lockedUntil) {
+      setLockedUntil(null);
+      setFailedAttempts(0);
+      setErrorText("");
+    }
+  }, [lockedUntil, now]);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (normalize(password) === normalizedSecret) {
-      setIsUnlocked(true);
-      setErrorText("");
+    if (isLocked) {
+      setErrorText(`Kısa bir bekleme var: ${secondsLeft} saniye sonra tekrar dene.`);
+      setShake(true);
+      window.setTimeout(() => setShake(false), 420);
       return;
     }
 
-    setErrorText("Bu olmadı. İpucuna bir daha bak.");
+    const normalizedInput = normalize(password);
+
+    if (!normalizedInput) {
+      setErrorText("Şifre boş olamaz.");
+      return;
+    }
+
+    const inputHash = await sha256(normalizedInput);
+
+    if (inputHash === secretHash) {
+      setIsUnlocked(true);
+      setErrorText("");
+      setFailedAttempts(0);
+      setLockedUntil(null);
+      return;
+    }
+
+    const nextAttempts = failedAttempts + 1;
+
+    if (nextAttempts >= MAX_ATTEMPTS) {
+      const nextLock = Date.now() + LOCK_DURATION_MS;
+      setLockedUntil(nextLock);
+      setNow(Date.now());
+      setFailedAttempts(0);
+      setErrorText(`Çok deneme oldu. ${Math.ceil(LOCK_DURATION_MS / 1000)} saniye bekle.`);
+    } else {
+      setFailedAttempts(nextAttempts);
+      setErrorText(`Bu olmadı. ${MAX_ATTEMPTS - nextAttempts} deneme hakkın kaldı.`);
+    }
+
     setShake(true);
     window.setTimeout(() => setShake(false), 420);
   };
@@ -125,15 +198,19 @@ function App() {
                     onChange={(event) => setPassword(event.target.value)}
                     placeholder="Şifreyi yaz"
                     autoComplete="off"
+                    disabled={isLocked}
                     className="lock-input"
                   />
-                  <button type="submit" className="unlock-btn">
+                  <button type="submit" className="unlock-btn" disabled={isLocked}>
                     <FaUnlockAlt aria-hidden="true" />
-                    Kapıyı Aç
+                    {isLocked ? `${secondsLeft} sn` : "Kapıyı Aç"}
                   </button>
                 </form>
 
                 <p className="hint">İpucu: {PASSWORD_HINT}</p>
+                <p className="hint">
+                  Güvenlik modu: {MAX_ATTEMPTS} yanlış denemeden sonra kısa süreli kilit açılır.
+                </p>
                 {errorText ? <p className="error-text">{errorText}</p> : null}
               </article>
             </motion.section>
